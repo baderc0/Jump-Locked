@@ -39,7 +39,7 @@ func handle_move_input():
 
 # Player has less control in the air
 func get_h_weight():
-	return 0.2 if is_grounded() else 0.05
+	return 0.2 if is_grounded() else 0.2
 
 func update_move_dir():
 	move_dir =  -int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right"))
