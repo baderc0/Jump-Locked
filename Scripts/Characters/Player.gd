@@ -19,6 +19,7 @@ var is_grounded
 func _ready():
 	print("adding something andrei")
 	print("yeet")
+	print("braedon test")
 	pass 
 
 func apply_movement():
