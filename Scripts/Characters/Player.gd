@@ -17,7 +17,8 @@ var idle_cutoff = MAX_SPEED / 6
 var is_grounded
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("yeet")
+	
+	print("another test")
 	pass 
 
 func apply_movement():
