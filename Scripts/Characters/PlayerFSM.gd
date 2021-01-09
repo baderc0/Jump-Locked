@@ -1,7 +1,7 @@
 extends "res://Scripts/Other/StateMachine.gd"
 
 onready var state_label = get_parent().get_node("StateLabel")
-
+onready var anim = get_parent().get_node("AnimationPlayer")
 func _ready():
 	add_state("idle")
 	add_state("run")
@@ -63,7 +63,17 @@ func _get_transition(delta):
 # setting anim, tween, timers, etc
 func _enter_state(new_state, old_state):
 	state_label.text = states.keys()[state]
-	pass
+	
+	# Animations
+	match new_state:
+		states.idle:
+			anim.play("idle")
+		states.run:
+			anim.play("run")
+		states.jump:
+			anim.play("jump")
+		states.fall:
+			anim.play("fall")
 
 func _exit_state(old_state, new_state):
 	pass
