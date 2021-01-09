@@ -25,6 +25,7 @@ func apply_movement():
 	print(velocity)
 	print("testing")
 	print("working on my branch")
+	print("pushing to origin")
 	is_grounded = is_grounded()
 	$GroundedLabel.text = str(is_grounded)
 
