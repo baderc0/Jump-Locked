@@ -27,7 +27,7 @@ func apply_movement():
 	print("working on my branch")
 	is_grounded = is_grounded()
 	$GroundedLabel.text = str(is_grounded)
-	
+
 	# Flip player depending on which way they are moving
 	if move_dir == 1:
 		sprite.flip_h = false
