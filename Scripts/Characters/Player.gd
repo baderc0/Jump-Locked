@@ -22,6 +22,7 @@ func _ready():
 
 func apply_movement():
 	print(velocity)
+	print("testing")
 	is_grounded = is_grounded()
 	$GroundedLabel.text = str(is_grounded)
 	
