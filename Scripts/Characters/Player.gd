@@ -1,7 +1,9 @@
 extends KinematicBody2D
 
-onready var sprite = $Sprite
+signal trigger_cutscene
 
+onready var sprite = $Sprite
+onready var anim = $AnimationPlayer
 
 const UP = Vector2(0, -1)
 const JUMP_VEL = -200
@@ -11,22 +13,16 @@ var velocity = Vector2()
 var move_speed = 100
 var gravity = 500
 var move_dir
+var can_attack = false
 
 var idle_cutoff = MAX_SPEED / 6
 
 var is_grounded
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("adding something andrei")
-	print("yeet")
-	print("braedon test")
 	pass 
 
 func apply_movement():
-	print(velocity)
-	print("testing")
-	print("working on my branch")
-	print("pushing to origin")
 	is_grounded = is_grounded()
 	$GroundedLabel.text = str(is_grounded)
 
@@ -45,7 +41,7 @@ func handle_move_input():
 
 # Player has less control in the air
 func get_h_weight():
-	return 0.2 if is_grounded() else 0.2
+	return 0.2 if is_grounded() else 0.075
 
 func update_move_dir():
 	move_dir =  -int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right"))
@@ -55,3 +51,9 @@ func jump():
 
 func is_grounded():
 	return true if $GroundedRaycast.is_colliding() else false
+
+func get_key():
+	# Play animation 
+	print("got key player func")
+	emit_signal("trigger_cutscene")
+	can_attack = true
