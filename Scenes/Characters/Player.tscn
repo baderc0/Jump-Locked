@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Art/Characters/locke_spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Characters/Player.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Characters/PlayerFSM.gd" type="Script" id=3]
+[ext_resource path="res://Other/Montserrat-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fall"
@@ -47,7 +48,11 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 3.91339, 4.08117 )
 
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 4 )
+
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 16
 script = ExtResource( 2 )
 
 [node name="PlayerFSM" type="Node2D" parent="."]
@@ -67,3 +72,29 @@ anims/run = SubResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.222977, 3.19599 )
 shape = SubResource( 5 )
+
+[node name="StateLabel" type="Label" parent="."]
+margin_left = -20.1423
+margin_top = -24.2302
+margin_right = 19.8577
+margin_bottom = -3.23018
+custom_fonts/font = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GroundedLabel" type="Label" parent="."]
+margin_left = -18.2491
+margin_top = 11.0717
+margin_right = 21.7509
+margin_bottom = 32.0717
+custom_fonts/font = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GroundedRaycast" type="RayCast2D" parent="."]
+scale = Vector2( 0.324, 1 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 16

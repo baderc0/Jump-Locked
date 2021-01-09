@@ -1,3 +1,17 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Environment/Platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=2]
 
 [node name="World" type="Node2D"]
+
+[node name="Platform" parent="." instance=ExtResource( 1 )]
+position = Vector2( -0.958004, 8.7827 )
+scale = Vector2( 35.6413, -1.07362 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( -27.7932, -22.7978 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 0.2, 0.2 )
