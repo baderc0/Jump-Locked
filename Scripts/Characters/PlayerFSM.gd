@@ -13,20 +13,26 @@ func _ready():
 	add_state("unlock")
 	call_deferred("set_state", states.idle)
 	parent.connect("trigger_cutscene", self, "play_cutscene")
+	print_states()
+
+func print_states():
+	print(states.keys())
 
 func _input(event):
-	if event.is_action_pressed("jump") && parent.is_grounded():
+	if event.is_action_pressed("jump") && parent.is_grounded && state != states.unlock:
 		parent.jump()
 		set_state(states.jump)
-	elif state == states.jump && event.is_action_released("jump"):
-		parent.velocity.y *= 0.5
+	elif state == states.jump:
+		if event.is_action_released("jump"):
+			parent.velocity.y *= 0.4
 
 # Calls funcs in Player.gd
 func _state_logic(delta):
 	parent.update_move_dir()
-	parent.handle_move_input()
-	parent.apply_gravity(delta)
-	parent.apply_movement()
+	if state != states.unlock:
+		parent.handle_move_input()
+		parent.apply_gravity(delta)
+		parent.apply_movement()
 
 func _get_transition(delta):
 	match state:
@@ -65,33 +71,43 @@ func _get_transition(delta):
 		states.attack:
 			pass
 		states.unlock:
-			# need to set player input to false here
-			anim.play("unlock")
-			yield(anim, "animation_finished")
-			return states.idle
+			pass
 	return null
 
 # setting anim, tween, timers, etc
 func _enter_state(new_state, old_state):
-	#state_label.text = states.keys()[state]
+	state_label.text = states.keys()[state]
 	
 	# Animations
-	match new_state:
-		states.idle:
-			anim.play("idle")
-		states.run:
-			anim.play("run")
-		states.jump:
-			anim.play("jump")
-		states.fall:
-			anim.play("fall")
+	if !parent.can_attack:
+		match new_state:
+			states.idle:
+				anim.play("idle_locked")
+			states.run:
+				anim.play("run_locked")
+			states.jump:
+				anim.play("jump_locked")
+			states.fall:
+				anim.play("fall_locked")
+	else: # Player picked up key to unlock attack
+		match new_state:
+			states.idle:
+				anim.play("idle_unlocked")
+			states.run:
+				anim.play("run_unlocked")
+			states.jump:
+				anim.play("jump_unlocked")
+			states.fall:
+				anim.play("fall_unlocked")
 
 func _exit_state(old_state, new_state):
 	pass
 
 func play_cutscene():
-	print("we have arrived at the scene of cuttage")
+	anim.play("unlock")
+
+func start_unlock():
 	set_state(states.unlock)
 
-func _on_timer_timeout():
-	print("finished timer!")
+func end_unlock():
+	set_state(states.idle)
