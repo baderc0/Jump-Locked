@@ -7,7 +7,7 @@ onready var anim = $AnimationPlayer
 
 const UP = Vector2(0, -1)
 const JUMP_VEL = -200
-const MAX_SPEED = 150
+const MAX_SPEED = 120
 
 var velocity = Vector2()
 var move_speed = 100
