@@ -4,6 +4,8 @@ onready var state_label = get_parent().get_node("StateLabel")
 onready var anim = get_parent().get_node("AnimationPlayer")
 onready var timer = get_parent().get_node("Timer")
 
+
+
 func _ready():
 	add_state("idle")
 	add_state("run")
@@ -19,6 +21,8 @@ func print_states():
 	print(states.keys())
 
 func _input(event):
+	if event.is_action_pressed("shoot"):
+		parent.shoot()
 	if event.is_action_pressed("jump") && parent.is_grounded && state != states.unlock:
 		parent.jump()
 		set_state(states.jump)

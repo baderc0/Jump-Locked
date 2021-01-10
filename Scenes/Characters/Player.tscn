@@ -188,6 +188,9 @@ vframes = 4
 hframes = 6
 frame = 13
 
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2( -0.734275, 3.10416 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fall_locked = SubResource( 1 )
 anims/fall_unlocked = SubResource( 8 )
@@ -231,3 +234,5 @@ collision_mask = 16
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Rig" type="Node2D" parent="."]

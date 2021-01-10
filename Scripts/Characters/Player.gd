@@ -5,9 +5,13 @@ signal trigger_cutscene
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
+var bullet = preload("res://Scenes/Other/Bullet.tscn")
+
 const UP = Vector2(0, -1)
 const JUMP_VEL = -200
 const MAX_SPEED = 120
+
+var bullet_speed = Vector2(100, 0)
 
 var velocity = Vector2()
 var move_speed = 100
@@ -57,3 +61,15 @@ func get_key():
 	print("got key player func")
 	emit_signal("trigger_cutscene")
 	can_attack = true
+
+func shoot():
+	print(move_dir)
+	print("shoot")
+	var bullet_instance = bullet.instance()
+	bullet_instance.position = $Muzzle.get_global_position()
+	get_tree().get_root().add_child(bullet_instance)
+	
+	if move_dir == 1:
+		bullet_instance.change_dir(1)
+	elif move_dir == -1:
+		bullet_instance.change_dir(-1)
