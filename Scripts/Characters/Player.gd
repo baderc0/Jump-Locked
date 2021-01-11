@@ -6,6 +6,7 @@ onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
 var bullet = preload("res://Scenes/Other/Bullet.tscn")
+var anim_tree
 
 const UP = Vector2(0, -1)
 const JUMP_VEL = -200
@@ -26,7 +27,9 @@ var idle_cutoff = MAX_SPEED / 6
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	is_unlocked = true
+	is_unlocked = false
+	anim_tree = $AnimationTree.get("parameters/playback")
+	anim_tree.start("run_locked")
 	pass 
 
 func _physics_process(delta):
@@ -48,7 +51,6 @@ func apply_movement():
 	velocity = move_and_slide(velocity, UP)
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		print(collision.collider.name)
 		if collision.collider.name == "Flip":
 			if collision.collider.is_in_group("flip"):
 				print("flip!!!!!")
@@ -58,8 +60,13 @@ func apply_gravity(delta):
 	velocity.y += gravity * delta
 
 func _input(event):
-	if event.is_action_pressed("jump") && is_unlocked:
-		jump()
+	if event.is_action_pressed("jump"):
+		if is_unlocked:
+			anim_tree.travel("jump_unlocked")
+			jump()
+		else:
+			anim_tree.travel("jump_locked")
+			jump()
 	elif event.is_action_released("jump"):
 		velocity.y *= 0.4
 
@@ -90,7 +97,7 @@ func check_state():
 		can_attack = false
 
 func get_key():
-	# Play animation 
+	print("key in player")
 	is_unlocked = true
 
 func flip():
@@ -98,7 +105,9 @@ func flip():
 
 func play_animation():
 	if is_unlocked:
-		anim.play("run_unlocked")
+		anim_tree.travel("run_unlocked")
+	else:
+		anim_tree.travel("run_locked")
 	pass
 
 func shoot():
