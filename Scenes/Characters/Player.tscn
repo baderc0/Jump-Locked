@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Art/Characters/locke_spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Characters/Player.gd" type="Script" id=2]
@@ -117,6 +117,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=7]
 length = 0.6
+loop = true
 step = 0.15
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -164,8 +165,6 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9, 10, 11, 12, 13 ]
 }
 
-[sub_resource type="AnimationNodeStateMachine" id=33]
-
 [sub_resource type="AnimationNodeAnimation" id=20]
 animation = "fall_locked"
 
@@ -200,8 +199,6 @@ animation = "run_unlocked"
 switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id=18]
-states/StateMachine/node = SubResource( 33 )
-states/StateMachine/position = Vector2( -165, 137 )
 states/fall_locked/node = SubResource( 20 )
 states/fall_locked/position = Vector2( 409, 254 )
 states/fall_unlocked/node = SubResource( 21 )
@@ -215,11 +212,10 @@ states/run_locked/position = Vector2( 98, 107 )
 states/run_unlocked/node = SubResource( 25 )
 states/run_unlocked/position = Vector2( 98, 437 )
 transitions = [ "run_locked", "jump_locked", SubResource( 26 ), "run_unlocked", "jump_unlocked", SubResource( 27 ), "jump_locked", "fall_locked", SubResource( 28 ), "fall_locked", "run_locked", SubResource( 29 ), "jump_unlocked", "fall_unlocked", SubResource( 30 ), "fall_unlocked", "run_unlocked", SubResource( 31 ), "run_locked", "run_unlocked", SubResource( 32 ) ]
-graph_offset = Vector2( -380, 69 )
+start_node = "run_locked"
+graph_offset = Vector2( -374, 41 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=19]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=34]
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 3.91339, 4.08117 )
@@ -248,13 +244,12 @@ tree_root = SubResource( 18 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 19 )
-parameters/StateMachine/playback = SubResource( 34 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 6
-frame = 5
+frame = 23
 
 [node name="Muzzle" type="Node2D" parent="."]
 position = Vector2( -0.734275, 3.10416 )

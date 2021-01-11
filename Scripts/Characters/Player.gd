@@ -10,7 +10,7 @@ var anim_tree
 
 const UP = Vector2(0, -1)
 const JUMP_VEL = -200
-const MAX_SPEED = 120
+const MAX_SPEED = 80
 
 var bullet_speed = Vector2(100, 0)
 
@@ -29,8 +29,6 @@ var idle_cutoff = MAX_SPEED / 6
 func _ready():
 	is_unlocked = false
 	anim_tree = $AnimationTree.get("parameters/playback")
-	anim_tree.start("run_locked")
-	pass 
 
 func _physics_process(delta):
 	check_state()
@@ -60,8 +58,9 @@ func apply_gravity(delta):
 	velocity.y += gravity * delta
 
 func _input(event):
-	if event.is_action_pressed("jump"):
+	if event.is_action_pressed("jump") && can_jump:
 		if is_unlocked:
+			print("jump unlock")
 			anim_tree.travel("jump_unlocked")
 			jump()
 		else:
@@ -90,9 +89,11 @@ func is_grounded():
 func check_state():
 	$UnlockedLabel.text = str(is_unlocked)
 	if is_unlocked:
+		anim_tree.travel("run_unlocked")
 		can_jump = true
 		can_attack = true
 	else:
+		anim_tree.travel("run_locked")
 		can_jump = false
 		can_attack = false
 
