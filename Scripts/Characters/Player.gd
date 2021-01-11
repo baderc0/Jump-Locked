@@ -16,17 +16,27 @@ var bullet_speed = Vector2(100, 0)
 var velocity = Vector2()
 var move_speed = 100
 var gravity = 500
-var move_dir
-var can_attack = false
+var move_dir = 1
+var can_attack
+var can_jump 
+var is_grounded
+var is_unlocked
 
 var idle_cutoff = MAX_SPEED / 6
 
-var is_grounded
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	is_unlocked = true
 	pass 
 
+func _physics_process(delta):
+	check_state()
+	apply_gravity(delta)
+	handle_move()
+	apply_movement()
+
 func apply_movement():
+	play_animation()
 	is_grounded = is_grounded()
 	$GroundedLabel.text = str(is_grounded)
 
@@ -36,11 +46,24 @@ func apply_movement():
 	elif move_dir == -1:
 		sprite.flip_h = true
 	velocity = move_and_slide(velocity, UP)
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		print(collision.collider.name)
+		if collision.collider.name == "Flip":
+			if collision.collider.is_in_group("flip"):
+				print("flip!!!!!")
+				flip()
 
 func apply_gravity(delta):
 	velocity.y += gravity * delta
 
-func handle_move_input():
+func _input(event):
+	if event.is_action_pressed("jump") && is_unlocked:
+		jump()
+	elif event.is_action_released("jump"):
+		velocity.y *= 0.4
+
+func handle_move():
 	velocity.x = lerp(velocity.x, MAX_SPEED * move_dir, get_h_weight())
 
 # Player has less control in the air
@@ -52,15 +75,31 @@ func update_move_dir():
 
 func jump():
 	velocity.y = JUMP_VEL
+	is_unlocked = false # Lock every time the player jumps
 
 func is_grounded():
 	return true if $GroundedRaycast.is_colliding() else false
 
+func check_state():
+	$UnlockedLabel.text = str(is_unlocked)
+	if is_unlocked:
+		can_jump = true
+		can_attack = true
+	else:
+		can_jump = false
+		can_attack = false
+
 func get_key():
 	# Play animation 
-	print("got key player func")
-	emit_signal("trigger_cutscene")
-	can_attack = true
+	is_unlocked = true
+
+func flip():
+	move_dir = -move_dir
+
+func play_animation():
+	if is_unlocked:
+		anim.play("run_unlocked")
+	pass
 
 func shoot():
 	print(move_dir)

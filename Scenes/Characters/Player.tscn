@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Art/Characters/locke_spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Characters/Player.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/Characters/PlayerFSM.gd" type="Script" id=3]
 [ext_resource path="res://Other/Montserrat-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -21,7 +20,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 resource_name = "fall_unlocked"
 length = 0.1
 tracks/0/type = "value"
@@ -37,8 +36,7 @@ tracks/0/keys = {
 "values": [ 22 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle_locked"
+[sub_resource type="Animation" id=3]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -53,7 +51,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=4]
 resource_name = "idle_unlocked"
 loop = true
 tracks/0/type = "value"
@@ -69,8 +67,7 @@ tracks/0/keys = {
 "values": [ 18, 19 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "jump_locked"
+[sub_resource type="Animation" id=5]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -85,7 +82,7 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=6]
 resource_name = "jump_unlocked"
 length = 0.1
 tracks/0/type = "value"
@@ -101,8 +98,24 @@ tracks/0/keys = {
 "values": [ 20 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "run_locked"
+[sub_resource type="Animation" id=12]
+resource_name = "lock"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 12, 11, 10, 9, 8, 7, 6 ]
+}
+
+[sub_resource type="Animation" id=7]
 length = 0.6
 loop = true
 step = 0.15
@@ -119,7 +132,7 @@ tracks/0/keys = {
 "values": [ 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=8]
 resource_name = "run_unlocked"
 length = 0.6
 loop = true
@@ -137,8 +150,8 @@ tracks/0/keys = {
 "values": [ 20, 19, 22, 23 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "unlock"
+[sub_resource type="Animation" id=9]
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -146,41 +159,21 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 6, 7, 8, 9, 10, 11, 12, 13 ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath("PlayerFSM")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "start_unlock"
-}, {
-"args": [  ],
-"method": "end_unlock"
-} ]
-}
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 3.91339, 4.08117 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=11]
 font_data = ExtResource( 4 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 16
 script = ExtResource( 2 )
-
-[node name="PlayerFSM" type="Node2D" parent="."]
-script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -193,35 +186,36 @@ position = Vector2( -0.734275, 3.10416 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fall_locked = SubResource( 1 )
-anims/fall_unlocked = SubResource( 8 )
-anims/idle_locked = SubResource( 2 )
-anims/idle_unlocked = SubResource( 9 )
-anims/jump_locked = SubResource( 3 )
-anims/jump_unlocked = SubResource( 10 )
-anims/run_locked = SubResource( 4 )
-anims/run_unlocked = SubResource( 11 )
-anims/unlock = SubResource( 7 )
+anims/fall_unlocked = SubResource( 2 )
+anims/idle_locked = SubResource( 3 )
+anims/idle_unlocked = SubResource( 4 )
+anims/jump_locked = SubResource( 5 )
+anims/jump_unlocked = SubResource( 6 )
+anims/lock = SubResource( 12 )
+anims/run_locked = SubResource( 7 )
+anims/run_unlocked = SubResource( 8 )
+anims/unlock = SubResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.899482, 3.05568 )
-shape = SubResource( 5 )
+shape = SubResource( 10 )
 
-[node name="StateLabel" type="Label" parent="."]
-margin_left = -20.1423
-margin_top = -24.2302
-margin_right = 19.8577
-margin_bottom = -3.23018
-custom_fonts/font = SubResource( 6 )
+[node name="GroundedLabel" type="Label" parent="."]
+margin_left = -18.3325
+margin_top = -23.8844
+margin_right = 21.6675
+margin_bottom = -2.88442
+custom_fonts/font = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GroundedLabel" type="Label" parent="."]
-margin_left = -18.2491
-margin_top = 11.0717
-margin_right = 21.7509
-margin_bottom = 32.0717
-custom_fonts/font = SubResource( 6 )
+[node name="UnlockedLabel" type="Label" parent="."]
+margin_left = -19.3285
+margin_top = -38.7712
+margin_right = 20.6715
+margin_bottom = -17.7712
+custom_fonts/font = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
