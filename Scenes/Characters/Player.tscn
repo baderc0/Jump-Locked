@@ -8,7 +8,7 @@
 resource_name = "fall_locked"
 length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rig/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -24,7 +24,7 @@ tracks/0/keys = {
 resource_name = "fall_unlocked"
 length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rig/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -39,7 +39,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=3]
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rig/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -55,7 +55,7 @@ tracks/0/keys = {
 resource_name = "idle_unlocked"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rig/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -70,7 +70,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=5]
 length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rig/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -86,7 +86,7 @@ tracks/0/keys = {
 resource_name = "jump_unlocked"
 length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rig/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -98,12 +98,12 @@ tracks/0/keys = {
 "values": [ 20 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=7]
 resource_name = "lock"
 length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rig/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -115,12 +115,12 @@ tracks/0/keys = {
 "values": [ 13, 12, 11, 10, 9, 8, 7, 6 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.6
 loop = true
 step = 0.15
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rig/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -132,13 +132,12 @@ tracks/0/keys = {
 "values": [ 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "run_unlocked"
+[sub_resource type="Animation" id=9]
 length = 0.6
 loop = true
 step = 0.15
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rig/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -150,10 +149,10 @@ tracks/0/keys = {
 "values": [ 20, 21, 22, 23 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.8
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rig/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -165,62 +164,62 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9, 10, 11, 12, 13 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "fall_locked"
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "fall_unlocked"
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "jump_locked"
 
-[sub_resource type="AnimationNodeAnimation" id=23]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "jump_unlocked"
 
-[sub_resource type="AnimationNodeAnimation" id=24]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "run_locked"
 
-[sub_resource type="AnimationNodeAnimation" id=25]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "run_unlocked"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=18]
-states/fall_locked/node = SubResource( 20 )
+[sub_resource type="AnimationNodeStateMachine" id=24]
+states/fall_locked/node = SubResource( 11 )
 states/fall_locked/position = Vector2( 409, 254 )
-states/fall_unlocked/node = SubResource( 21 )
+states/fall_unlocked/node = SubResource( 12 )
 states/fall_unlocked/position = Vector2( 409, 591 )
-states/jump_locked/node = SubResource( 22 )
+states/jump_locked/node = SubResource( 13 )
 states/jump_locked/position = Vector2( 409, 107 )
-states/jump_unlocked/node = SubResource( 23 )
+states/jump_unlocked/node = SubResource( 14 )
 states/jump_unlocked/position = Vector2( 409, 437 )
-states/run_locked/node = SubResource( 24 )
+states/run_locked/node = SubResource( 15 )
 states/run_locked/position = Vector2( 98, 107 )
-states/run_unlocked/node = SubResource( 25 )
+states/run_unlocked/node = SubResource( 16 )
 states/run_unlocked/position = Vector2( 98, 437 )
-transitions = [ "run_locked", "jump_locked", SubResource( 26 ), "run_unlocked", "jump_unlocked", SubResource( 27 ), "jump_locked", "fall_locked", SubResource( 28 ), "fall_locked", "run_locked", SubResource( 29 ), "jump_unlocked", "fall_unlocked", SubResource( 30 ), "fall_unlocked", "run_unlocked", SubResource( 31 ), "run_locked", "run_unlocked", SubResource( 32 ) ]
+transitions = [ "run_locked", "jump_locked", SubResource( 17 ), "run_unlocked", "jump_unlocked", SubResource( 18 ), "jump_locked", "fall_locked", SubResource( 19 ), "fall_locked", "run_locked", SubResource( 20 ), "jump_unlocked", "fall_unlocked", SubResource( 21 ), "fall_unlocked", "run_unlocked", SubResource( 22 ), "run_locked", "run_unlocked", SubResource( 23 ) ]
 start_node = "run_locked"
 graph_offset = Vector2( -374, 41 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=19]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 3.91339, 4.08117 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=27]
 font_data = ExtResource( 4 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -234,36 +233,30 @@ anims/idle_locked = SubResource( 3 )
 anims/idle_unlocked = SubResource( 4 )
 anims/jump_locked = SubResource( 5 )
 anims/jump_unlocked = SubResource( 6 )
-anims/lock = SubResource( 12 )
-anims/run_locked = SubResource( 7 )
-anims/run_unlocked = SubResource( 8 )
-anims/unlock = SubResource( 9 )
+anims/lock = SubResource( 7 )
+anims/run_locked = SubResource( 8 )
+anims/run_unlocked = SubResource( 9 )
+anims/unlock = SubResource( 10 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 18 )
+tree_root = SubResource( 24 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 19 )
-
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-vframes = 4
-hframes = 6
-frame = 23
+parameters/playback = SubResource( 25 )
 
 [node name="Muzzle" type="Node2D" parent="."]
 position = Vector2( -0.734275, 3.10416 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 5 )
-shape = SubResource( 10 )
+position = Vector2( 0, 4 )
+shape = SubResource( 26 )
 
 [node name="GroundedLabel" type="Label" parent="."]
 margin_left = -18.3325
 margin_top = -23.8844
 margin_right = 21.6675
 margin_bottom = -2.88442
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -273,18 +266,32 @@ margin_left = -19.3285
 margin_top = -38.7712
 margin_right = 20.6715
 margin_bottom = -17.7712
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="GroundedRaycast" type="RayCast2D" parent="."]
-scale = Vector2( 0.324, 1 )
-enabled = true
-cast_to = Vector2( 0, 10 )
-collision_mask = 16
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="Rig" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Rig"]
+texture = ExtResource( 1 )
+vframes = 4
+hframes = 6
+frame = 2
+
+[node name="ForwardRaycast" type="RayCast2D" parent="Rig"]
+position = Vector2( 0, 2 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+enabled = true
+cast_to = Vector2( 0, 15 )
+collision_mask = 16
+
+[node name="GroundedRaycast" type="RayCast2D" parent="Rig"]
+scale = Vector2( 0.324, 1 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 16

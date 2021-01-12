@@ -25,6 +25,8 @@ var is_unlocked
 
 var idle_cutoff = MAX_SPEED / 6
 
+var last_checkpoint
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	is_unlocked = false
@@ -37,16 +39,15 @@ func _physics_process(delta):
 	apply_movement()
 
 func apply_movement():
+	self.global_position
 	play_animation()
 	is_grounded = is_grounded()
 	$GroundedLabel.text = str(is_grounded)
 
-	# Flip player depending on which way they are moving
-	if move_dir == 1:
-		sprite.flip_h = false
-	elif move_dir == -1:
-		sprite.flip_h = true
+	if $Rig/ForwardRaycast.is_colliding():
+		flip()
 	velocity = move_and_slide(velocity, UP)
+	
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		if collision.collider.name == "Flip":
@@ -58,6 +59,8 @@ func apply_gravity(delta):
 	velocity.y += gravity * delta
 
 func _input(event):
+	if event.is_action_pressed("restart") && last_checkpoint != null:
+		self.global_position = last_checkpoint
 	if event.is_action_pressed("jump") && can_jump:
 		if is_unlocked:
 			print("jump unlock")
@@ -84,7 +87,7 @@ func jump():
 	is_unlocked = false # Lock every time the player jumps
 
 func is_grounded():
-	return true if $GroundedRaycast.is_colliding() else false
+	return true if $Rig/GroundedRaycast.is_colliding() else false
 
 func check_state():
 	$UnlockedLabel.text = str(is_unlocked)
@@ -101,8 +104,15 @@ func get_key():
 	print("key in player")
 	is_unlocked = true
 
+# Changes move_dir and flips character Rig and CollisionShape
 func flip():
+	print("flip func")
 	move_dir = -move_dir
+	
+	if move_dir == 1:
+		$Rig.scale.x = 1
+	elif move_dir == -1:
+		$Rig.scale.x = -1
 
 func play_animation():
 	if is_unlocked:
@@ -122,3 +132,7 @@ func shoot():
 		bullet_instance.change_dir(1)
 	elif move_dir == -1:
 		bullet_instance.change_dir(-1)
+
+func checkpoint(var global_pos):
+	print("you have reached a checkpoint")
+	last_checkpoint = Vector2(global_pos[2][0], global_pos[2][1])
