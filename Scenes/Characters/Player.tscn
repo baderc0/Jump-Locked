@@ -280,7 +280,7 @@ one_shot = true
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 6
-frame = 2
+frame = 4
 
 [node name="ForwardRaycast" type="RayCast2D" parent="Rig"]
 position = Vector2( 0, 2 )
@@ -295,3 +295,7 @@ scale = Vector2( 0.324, 1 )
 enabled = true
 cast_to = Vector2( 0, 10 )
 collision_mask = 16
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.3, 0.3 )
