@@ -7,4 +7,5 @@ func _ready():
 func _on_JumpKey_body_entered(body):
 	body.get_key()
 	self.visible = false
+	self.collision_mask = 20
 	#queue_free()

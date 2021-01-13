@@ -16,4 +16,5 @@ func _on_Player_death():
 	for key in get_tree().get_nodes_in_group("keys"):
 		if !key.visible:
 			key.visible = true
+			key.collision_mask = 1
 

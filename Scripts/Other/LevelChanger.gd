@@ -19,15 +19,18 @@ func _ready():
 	current_level_path_set("res://Scenes/Levels/Level_" + str(level_val) + ".tscn")
 	next_level_path_set("res://Scenes/Levels/Level_" + str(level_val + 1) + ".tscn")
 	
-	level_name = "Level_" + str(level_val)
 	load_first_level()
 
 func load_level():
+	print("current level path: ", current_level_path)
 	get_tree().change_scene(next_level_path)
 	level_val += 1
+	current_level_path_set("res://Scenes/Levels/Level_" + str(level_val) + ".tscn")
+	print("current level path: ", current_level_path)
 	next_level_path_set("res://Scenes/Levels/Level_" + str(level_val + 1) + ".tscn")
 
 func load_first_level():
+	print(current_level_path)
 	get_tree().change_scene(current_level_path)
 
 func current_level_path_set(var path):

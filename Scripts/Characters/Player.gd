@@ -46,13 +46,13 @@ func _physics_process(delta):
 	apply_movement()
 
 func apply_movement():
-	self.global_position
 	play_animation()
 	is_grounded = is_grounded()
 	$GroundedLabel.text = str(is_grounded)
 
 	if $Rig/ForwardRaycast.is_colliding():
 		flip()
+	check_facing_direction()
 	velocity = move_and_slide(velocity, UP)
 	
 	for i in get_slide_count():
@@ -112,9 +112,9 @@ func get_key():
 
 # Changes move_dir and flips character Rig and CollisionShape
 func flip():
-	print("flip func")
 	move_dir = -move_dir
 	
+func check_facing_direction():
 	if move_dir == 1:
 		$Rig.scale.x = 1
 	elif move_dir == -1:
@@ -153,6 +153,7 @@ func die():
 		self.global_position = last_checkpoint
 	else:
 		is_unlocked = false
+		self.move_dir = 1
 		self.global_position = spawn_pos
 
 
