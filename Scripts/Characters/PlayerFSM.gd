@@ -7,13 +7,11 @@ onready var timer = get_parent().get_node("Timer")
 
 
 func _ready():
-	add_state("idle")
 	add_state("run")
 	add_state("jump")
 	add_state("fall")
 	add_state("attack")
-	add_state("unlock")
-	call_deferred("set_state", states.idle)
+	call_deferred("set_state", states.run)
 	parent.connect("trigger_cutscene", self, "play_cutscene")
 	print_states()
 
