@@ -1,8 +1,10 @@
 extends Area2D
 
 func _ready():
+	add_to_group("keys")
 	pass
 
-func _on_AttackKey_body_entered(body):
+func _on_JumpKey_body_entered(body):
 	body.get_key()
-	queue_free()
+	self.visible = false
+	#queue_free()

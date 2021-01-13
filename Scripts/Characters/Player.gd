@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal trigger_cutscene
+signal player_death
 
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
@@ -28,10 +29,15 @@ var idle_cutoff = MAX_SPEED / 6
 var spawn_pos
 var last_checkpoint
 
+var checkpoint_unlocked_state
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	is_unlocked = false
 	anim_tree = $AnimationTree.get("parameters/playback")
+	
+	# Connecting signals
+	connect("player_death", get_parent(), "_on_Player_death")
 
 func _physics_process(delta):
 	check_state()
@@ -136,11 +142,17 @@ func shoot():
 func checkpoint(var global_pos):
 	print("you have reached a checkpoint")
 	last_checkpoint = Vector2(global_pos[2][0], global_pos[2][1])
+	checkpoint_unlocked_state = is_unlocked
+	
 
 func die():
+	emit_signal("player_death")
+	
 	if last_checkpoint != null:
+		is_unlocked = checkpoint_unlocked_state
 		self.global_position = last_checkpoint
 	else:
+		is_unlocked = false
 		self.global_position = spawn_pos
 
 

@@ -11,3 +11,9 @@ func _ready():
 	player.position = player_spawn
 	player.spawn_pos = player_spawn
 
+func _on_Player_death():
+	print("got to level script player death signal")
+	for key in get_tree().get_nodes_in_group("keys"):
+		if !key.visible:
+			key.visible = true
+
