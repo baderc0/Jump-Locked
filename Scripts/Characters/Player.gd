@@ -25,6 +25,7 @@ var is_unlocked
 
 var idle_cutoff = MAX_SPEED / 6
 
+var spawn_pos
 var last_checkpoint
 
 # Called when the node enters the scene tree for the first time.
@@ -50,10 +51,9 @@ func apply_movement():
 	
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision.collider.name == "Flip":
-			if collision.collider.is_in_group("flip"):
-				print("flip!!!!!")
-				flip()
+		if collision.collider.name == "Water":
+			print("player died! lol")
+			die()
 
 func apply_gravity(delta):
 	velocity.y += gravity * delta
@@ -136,3 +136,11 @@ func shoot():
 func checkpoint(var global_pos):
 	print("you have reached a checkpoint")
 	last_checkpoint = Vector2(global_pos[2][0], global_pos[2][1])
+
+func die():
+	if last_checkpoint != null:
+		self.global_position = last_checkpoint
+	else:
+		self.global_position = spawn_pos
+
+

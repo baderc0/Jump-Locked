@@ -4,12 +4,13 @@
 [ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/Environment/tutorial_area_blocks.png" type="Texture" id=3]
 [ext_resource path="res://Art/Environment/tutorial_area_platforms.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/Other/AttackKey.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Other/JumpKey.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Art/Environment/trying_tilemap.png" type="Texture" id=6]
 [ext_resource path="res://Art/Environment/grass_tilemap.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Environment/Portal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Art/Environment/lava_world.png" type="Texture" id=9]
 [ext_resource path="res://Scenes/Environment/CheckpointFlag.tscn" type="PackedScene" id=14]
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 4, 16, 0, 16, 0, 0, 4, 0 )
