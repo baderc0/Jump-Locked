@@ -11,12 +11,12 @@ var anim_tree
 
 const UP = Vector2(0, -1)
 const JUMP_VEL = -200
-const MAX_SPEED = 80
+const MAX_SPEED = 150
 
 var bullet_speed = Vector2(100, 0)
 
 var velocity = Vector2()
-var move_speed = 100
+var move_speed = 500
 var gravity = 500
 var move_dir = 1
 var can_attack
@@ -65,8 +65,12 @@ func apply_gravity(delta):
 	velocity.y += gravity * delta
 
 func _input(event):
-	if event.is_action_pressed("restart") && last_checkpoint != null:
-		self.global_position = last_checkpoint
+	if event.is_action_pressed("restart"):
+		if last_checkpoint != null:
+			self.global_position = last_checkpoint
+		else:
+			restart_stage()
+	
 	if event.is_action_pressed("jump") && can_jump:
 		if is_unlocked:
 			print("jump unlock")
@@ -144,7 +148,6 @@ func checkpoint(var global_pos):
 	last_checkpoint = Vector2(global_pos[2][0], global_pos[2][1])
 	checkpoint_unlocked_state = is_unlocked
 	
-
 func die():
 	emit_signal("player_death")
 	
@@ -155,5 +158,11 @@ func die():
 		is_unlocked = false
 		self.move_dir = 1
 		self.global_position = spawn_pos
+
+func restart_stage():
+	global_position = spawn_pos
+	is_unlocked = false
+	pass
+
 
 
