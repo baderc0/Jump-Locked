@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Other/Montserrat-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/UI/TimerDisplay.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 1 )
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="TimerDisplay" type="RichTextLabel" parent="."]
+margin_left = 432.0
+margin_top = 513.0
+margin_right = 761.0
+margin_bottom = 703.0
+rect_scale = Vector2( 1.01596, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="TimerDisplay"]
+wait_time = 0.1
+autostart = true
+[connection signal="timeout" from="TimerDisplay/Timer" to="TimerDisplay" method="_on_Timer_timeout"]

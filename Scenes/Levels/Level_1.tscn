@@ -85,15 +85,6 @@ text = "Choose your own path!"
 align = 1
 autowrap = true
 
-[node name="Welcome7" parent="TutorialText" instance=ExtResource( 5 )]
-margin_left = 1154.58
-margin_top = 241.149
-margin_right = 1306.58
-margin_bottom = 310.149
-text = "You will respawn at this checkpoint on death"
-align = 1
-autowrap = true
-
 [node name="Interactables" type="Node2D" parent="."]
 
 [node name="Checkpoints" type="Node2D" parent="Interactables"]
@@ -110,7 +101,7 @@ position = Vector2( 617.817, 7.22749 )
 position = Vector2( 1289.75, 294.966 )
 
 [node name="JumpKey3" parent="Interactables/Keys" instance=ExtResource( 6 )]
-position = Vector2( 1499.77, 277.977 )
+position = Vector2( 1477.32, 279.099 )
 
 [node name="JumpKey4" parent="Interactables/Keys" instance=ExtResource( 6 )]
 position = Vector2( 1570.68, 247.021 )

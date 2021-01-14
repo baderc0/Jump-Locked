@@ -1,5 +1,6 @@
 extends Node
 
+
 var player_scene = preload("res://Scenes/Characters/Player.tscn")
 var player
 
@@ -15,7 +16,7 @@ onready var current_level # Actual scene
 onready var next_level
 
 func _ready():
-	level_val = 1
+	level_val = 2
 	current_level_path_set("res://Scenes/Levels/Level_" + str(level_val) + ".tscn")
 	next_level_path_set("res://Scenes/Levels/Level_" + str(level_val + 1) + ".tscn")
 	
@@ -30,7 +31,6 @@ func load_level():
 	next_level_path_set("res://Scenes/Levels/Level_" + str(level_val + 1) + ".tscn")
 
 func load_first_level():
-	print(current_level_path)
 	get_tree().change_scene(current_level_path)
 
 func current_level_path_set(var path):

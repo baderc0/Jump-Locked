@@ -160,7 +160,8 @@ func die():
 		self.global_position = spawn_pos
 
 func restart_stage():
-	global_position = spawn_pos
+	emit_signal("player_death")
+	global_position = spawn_pos                
 	is_unlocked = false
 	pass
 
