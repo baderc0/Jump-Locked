@@ -6,6 +6,9 @@ signal player_death
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
+
+var collectables = 0
+
 var bullet = preload("res://Scenes/Other/Bullet.tscn")
 var anim_tree
 
@@ -164,6 +167,11 @@ func restart_stage():
 	global_position = spawn_pos                
 	is_unlocked = false
 	pass
+
+func get_num_of_Collectables():
+	return collectables
+
+
 
 
 

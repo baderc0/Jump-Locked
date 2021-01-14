@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Environment/Grass2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Other/PlayerSpawn.tscn" type="PackedScene" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://Scripts/Environment/Levels.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Other/JumpKey.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Collectables/Star.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Other/Montserrat-Regular.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 7 )
 
 [node name="Level_2" type="Node2D"]
 script = ExtResource( 4 )
@@ -32,3 +36,15 @@ position = Vector2( 346.33, 161.698 )
 
 [node name="Portal" parent="Interactables/Portals" instance=ExtResource( 3 )]
 position = Vector2( 395.088, 152.779 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 39.3778
+margin_top = -65.4072
+margin_right = 239.378
+margin_bottom = -20.4072
+custom_fonts/font = SubResource( 1 )
+text = "btw you can press R to restart stage"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
