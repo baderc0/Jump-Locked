@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Other/Montserrat-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/UI/TimerDisplay.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/UI/LevelEndPopup.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/UI/RestartButton.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
@@ -52,16 +54,18 @@ margin_left = 193.0
 margin_top = 61.0
 margin_right = 680.0
 margin_bottom = 297.0
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RestartButton" type="Button" parent="LevelEndPopup"]
-margin_left = 158.0
-margin_top = 91.0
-margin_right = 215.0
-margin_bottom = 111.0
+margin_left = 116.0
+margin_top = 89.0
+margin_right = 196.0
+margin_bottom = 109.0
 text = "Restart"
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -76,3 +80,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="timeout" from="TimerDisplay/Timer" to="TimerDisplay" method="_on_Timer_timeout"]
+[connection signal="pressed" from="LevelEndPopup/RestartButton" to="LevelEndPopup" method="_on_RestartButton_pressed"]

@@ -50,7 +50,6 @@ func _ready():
 
 func _physics_process(delta):
 	check_state()
-	print("CAN RUN IN PP: " + str(can_run))
 	if can_run:
 		handle_move()
 	else:
