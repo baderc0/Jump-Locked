@@ -8,6 +8,8 @@
 [ext_resource path="res://Scenes/Interactables/Star.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Interactables/Portal.tscn" type="PackedScene" id=7]
 
+
+
 [node name="Level_3" type="Node2D"]
 script = ExtResource( 4 )
 

@@ -10,14 +10,11 @@ onready var anim = $AnimationPlayer
 
 var collectables = 0
 
-var bullet = preload("res://Scenes/Other/Bullet.tscn")
 var anim_tree
 
 const UP = Vector2(0, -1)
 const JUMP_VEL = -200
 const MAX_SPEED = 150
-
-var bullet_speed = Vector2(100, 0)
 
 var velocity = Vector2()
 var move_speed = 500
@@ -30,13 +27,6 @@ var is_unlocked
 var can_run
 
 var is_zoomed_in = false
-
-var idle_cutoff = MAX_SPEED / 6
-
-var spawn_pos
-var last_checkpoint
-
-var checkpoint_unlocked_state
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -64,16 +54,6 @@ func wait_for_keypress():
 	elif Input.is_action_pressed("move_right"):
 		move_dir = 1
 		can_run = true
-	elif Input.is_action_just_pressed("map"):
-		show_map()
-
-func show_map():
-	if !is_zoomed_in:
-		$Camera2D.zoom = Vector2(1.5, 1.5)
-		is_zoomed_in = true
-	else:
-		$Camera2D.zoom = Vector2(0.3, 0.3)
-		is_zoomed_in = false
 
 func apply_movement():
 	play_animation()
@@ -85,6 +65,7 @@ func apply_movement():
 	check_facing_direction()
 	velocity = move_and_slide(velocity, UP)
 	
+	# If player touches water
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		if collision.collider.name == "Water":
@@ -96,11 +77,7 @@ func apply_gravity(delta):
 
 func _input(event):
 	if event.is_action_pressed("restart"):
-		if last_checkpoint != null:
-			self.global_position = last_checkpoint
-		else:
-			restart_stage()
-	
+		restart_stage()
 	if event.is_action_pressed("jump") && can_jump:
 		if is_unlocked:
 			print("jump unlock")
@@ -165,37 +142,14 @@ func play_animation():
 		anim_tree.travel("run_locked")
 	pass
 
-func shoot():
-	print(move_dir)
-	print("shoot")
-	var bullet_instance = bullet.instance()
-	bullet_instance.position = $Muzzle.get_global_position()
-	get_tree().get_root().add_child(bullet_instance)
-	
-	if move_dir == 1:
-		bullet_instance.change_dir(1)
-	elif move_dir == -1:
-		bullet_instance.change_dir(-1)
-
-func checkpoint(var global_pos):
-	print("you have reached a checkpoint")
-	last_checkpoint = Vector2(global_pos[2][0], global_pos[2][1])
-	checkpoint_unlocked_state = is_unlocked
-	
 func die():
 	emit_signal("player_death")
-	
-	if last_checkpoint != null:
-		is_unlocked = checkpoint_unlocked_state
-		self.global_position = last_checkpoint
-	else:
-		is_unlocked = false
-		self.move_dir = 1
-		self.global_position = spawn_pos
+	is_unlocked = false
+	self.move_dir = 1
+	#self.global_position = spawn_pos
 
 func restart_stage():
-	emit_signal("player_death")
-	global_position = spawn_pos                
+	emit_signal("player_death")          
 	is_unlocked = false
 	can_run = false
 	velocity.x = 0

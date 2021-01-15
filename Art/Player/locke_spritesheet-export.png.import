@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/combo_locke_gun.png-7e829ec9c2e2576f10793e4b8e629dfb.stex"
+path="res://.import/locke_spritesheet-export.png-733bcbe6e8ae9c5ada3899e7b846636d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Characters/combo_locke_gun.png"
-dest_files=[ "res://.import/combo_locke_gun.png-7e829ec9c2e2576f10793e4b8e629dfb.stex" ]
+source_file="res://Art/Player/locke_spritesheet-export.png"
+dest_files=[ "res://.import/locke_spritesheet-export.png-733bcbe6e8ae9c5ada3899e7b846636d.stex" ]
 
 [params]
 

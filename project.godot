@@ -27,13 +27,11 @@ _global_script_class_icons={
 [application]
 
 config/name="My- First- Game- Jam- Winter- 2020"
-run/main_scene="res://Scenes/Environment/WorldTest2.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://Scenes/Environment/World.tscn"
 
 [autoload]
 
-PlayerVariables="*res://Scripts/Characters/PlayerVariables.gd"
-LevelChanger="*res://Scripts/Other/LevelChanger.gd"
+PlayerVariables="*res://Scripts/Player/PlayerVariables.gd"
 SoundManager="*res://addons/sound_manager/module/SoundManager.tscn"
 
 [editor_plugins]

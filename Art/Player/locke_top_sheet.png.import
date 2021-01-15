@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/locke_spritesheet-export_first.png-0cd162f0d8fd2cd85e6e74c96ba8a33b.stex"
+path="res://.import/locke_top_sheet.png-fa82c7795f8d142c56e687758ab71929.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Characters/locke_spritesheet-export_first.png"
-dest_files=[ "res://.import/locke_spritesheet-export_first.png-0cd162f0d8fd2cd85e6e74c96ba8a33b.stex" ]
+source_file="res://Art/Player/locke_top_sheet.png"
+dest_files=[ "res://.import/locke_top_sheet.png-fa82c7795f8d142c56e687758ab71929.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
