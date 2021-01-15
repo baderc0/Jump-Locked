@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal trigger_cutscene
 signal player_death
+signal player_get_collectable
 
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
@@ -26,6 +27,9 @@ var can_attack
 var can_jump 
 var is_grounded
 var is_unlocked
+var can_run
+
+var is_zoomed_in = false
 
 var idle_cutoff = MAX_SPEED / 6
 
@@ -36,17 +40,41 @@ var checkpoint_unlocked_state
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	can_run = false
 	is_unlocked = false
 	anim_tree = $AnimationTree.get("parameters/playback")
 	
 	# Connecting signals
 	connect("player_death", get_parent(), "_on_Player_death")
+	connect("player_get_collectable", get_parent(), "_on_Player_get_Collectable")
 
 func _physics_process(delta):
 	check_state()
-	apply_gravity(delta)
-	handle_move()
+	print("CAN RUN IN PP: " + str(can_run))
+	if can_run:
+		handle_move()
+	else:
+		wait_for_keypress()
 	apply_movement()
+	apply_gravity(delta)
+
+func wait_for_keypress():
+	if Input.is_action_pressed("move_left"):
+		move_dir = -1
+		can_run = true
+	elif Input.is_action_pressed("move_right"):
+		move_dir = 1
+		can_run = true
+	elif Input.is_action_just_pressed("map"):
+		show_map()
+
+func show_map():
+	if !is_zoomed_in:
+		$Camera2D.zoom = Vector2(1.5, 1.5)
+		is_zoomed_in = true
+	else:
+		$Camera2D.zoom = Vector2(0.3, 0.3)
+		is_zoomed_in = false
 
 func apply_movement():
 	play_animation()
@@ -96,6 +124,8 @@ func update_move_dir():
 	move_dir =  -int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right"))
 
 func jump():
+	SoundManager.play_se("player_jump")
+	SoundManager.set_volume_db(-30, "player_jump")
 	velocity.y = JUMP_VEL
 	is_unlocked = false # Lock every time the player jumps
 
@@ -119,6 +149,8 @@ func get_key():
 
 # Changes move_dir and flips character Rig and CollisionShape
 func flip():
+	SoundManager.play_se("player_hit_wall")
+	SoundManager.set_volume_db(-30, "player_hit_wall")
 	move_dir = -move_dir
 	
 func check_facing_direction():
@@ -166,11 +198,22 @@ func restart_stage():
 	emit_signal("player_death")
 	global_position = spawn_pos                
 	is_unlocked = false
+	can_run = false
+	velocity.x = 0
 	pass
 
 func get_num_of_Collectables():
 	return collectables
 
+func get_collectable():
+	print("player get collectable")
+	collectables += 1
+	emit_signal("player_get_collectable")
+
+func play_walk_sound():
+	pass
+	#SoundManager.play_se("player_walk_2")
+	#SoundManager.set_volume_db(-30, "player_walk_2")
 
 
 

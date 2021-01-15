@@ -16,7 +16,7 @@ onready var current_level # Actual scene
 onready var next_level
 
 func _ready():
-	level_val = 1
+	level_val = 3
 	current_level_path_set("res://Scenes/Levels/Level_" + str(level_val) + ".tscn")
 	next_level_path_set("res://Scenes/Levels/Level_" + str(level_val + 1) + ".tscn")
 	

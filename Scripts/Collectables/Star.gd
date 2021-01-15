@@ -1,13 +1,13 @@
 extends Sprite
 
-signal player_get_collectable
-
 func _ready():
-	connect("player_get_collectable", self.owner, "_on_Player_get_Collectable")
 	add_to_group("collectables")
+	$Area2D.set_collision_mask_bit(1, true)
 	pass 
 
 func _on_Area2D_body_entered(body):
-	emit_signal("player_get_collectable")
-	print("Character got a star!")
-	queue_free()
+	SoundManager.play_se("collectable_pickup")
+	SoundManager.set_volume_db(-40, "collectable_pickup")
+	body.get_collectable()
+	self.visible = false
+	$Area2D.set_collision_mask_bit(0, false)

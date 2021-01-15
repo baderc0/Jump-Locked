@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Environment/Grass2.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Other/JumpKey.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Interactables/JumpKey.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Other/PlayerSpawn.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Environment/Levels.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Environment/Water.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Collectables/Star.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Environment/Portal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Interactables/Star.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Interactables/Portal.tscn" type="PackedScene" id=7]
 
 [node name="Level_3" type="Node2D"]
 script = ExtResource( 4 )

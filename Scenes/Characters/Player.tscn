@@ -131,6 +131,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 2, 3, 4, 5 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15, 0.45 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_walk_sound"
+}, {
+"args": [  ],
+"method": "play_walk_sound"
+} ]
+}
 
 [sub_resource type="Animation" id=9]
 length = 0.6
@@ -280,7 +297,7 @@ one_shot = true
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 6
-frame = 3
+frame = 4
 
 [node name="ForwardRaycast" type="RayCast2D" parent="Rig"]
 position = Vector2( 0, 2 )
