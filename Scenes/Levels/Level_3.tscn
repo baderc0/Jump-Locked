@@ -17,7 +17,7 @@ tile_data = PoolIntArray( 131066, 0, 0, 131067, 0, 1, 131068, 0, 2, 196602, 0, 6
 [node name="Water" parent="." instance=ExtResource( 5 )]
 
 [node name="PlayerSpawn" parent="." instance=ExtResource( 3 )]
-position = Vector2( -19.3416, 45.1964 )
+position = Vector2( -12.2066, 46.3856 )
 
 [node name="Interactables" type="Node2D" parent="."]
 
@@ -65,5 +65,5 @@ position = Vector2( 657.06, 354.759 )
 
 [node name="Portals" type="Node2D" parent="Interactables"]
 
-[node name="Portal2" parent="Interactables/Portals" instance=ExtResource( 7 )]
+[node name="Portal" parent="Interactables/Portals" instance=ExtResource( 7 )]
 position = Vector2( 504.509, 345.439 )
