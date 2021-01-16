@@ -24,6 +24,8 @@ func _ready():
 	current_level = int(name)
 	player = player_scene.instance()
 	player.global_position = $PlayerSpawn.position
+	if current_level > 5:
+		player.has_backpack = true
 	
 	UI = UI_scene.instance()
 	UI.get_node("LevelLabel/Label").text = str(current_level)
@@ -44,7 +46,6 @@ func _ready():
 	$Player.connect("player_death", self, "_on_Player_death")
 	$Player.connect("player_restart", self, "_on_Player_restart")
 	connect("get_backpack", $Player, "_on_Player_get_backpack")
-	
 	$UI/LevelEndPopup.connect("restart_button_pressed", self, "_on_restart_button_pressed")
 	$UI/LevelEndPopup.connect("next_level_button_pressed", self, "_on_next_level_button_pressed")
 	
@@ -62,7 +63,7 @@ func _input(event):
 			$UI/PauseScreen.show()
 
 func _on_get_JumpKey():
-	print("you got a key")
+	$Player.inc_keys()
 	$Player.is_unlocked = true
 
 func _on_get_Collectable():
@@ -89,8 +90,10 @@ func _on_Player_death():
 	$Player.collectables = 0
 	$Player.is_unlocked = false
 	$Player.can_run = false
+	$Player.velocity.x = 0
 	$Player.move_dir = 1
 	$Player.global_position = $PlayerSpawn.position
+	$Player.num_of_keys = 0
 	respawn_interactables()    
 
 func _on_Player_restart(): 
@@ -98,12 +101,13 @@ func _on_Player_restart():
 	$Interactables/Portals/Portal/Label.visible = false
 	$Player.collectables = 0
 	$Player.is_unlocked = false
-	$Player.velocity.x = 0
 	$Player.global_position = $PlayerSpawn.position
+	$Player.num_of_keys = 0
+	$Player.clear_keys()
 	respawn_interactables()  
 
 func _on_restart_button_pressed():
-	_on_Player_restart()
+	_on_Player_death()
 	$UI/LevelEndPopup.hide()
 	get_tree().paused = false
 
@@ -128,6 +132,7 @@ func _on_BackpackArea_body_entered(body):
 	$AnimationPlayer.play("backpack_cutscene")
 	yield($AnimationPlayer, "animation_finished")
 	$AnimationPlayer/LockeSprite.queue_free()
+	$Backpack.queue_free()
 	$Player/Camera2D.current = true
 	get_tree().paused = false
 	emit_signal("get_backpack")

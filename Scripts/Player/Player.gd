@@ -10,24 +10,22 @@ onready var anim = $AnimationPlayer
 
 var has_backpack = false
 var collectables = 0
+var num_of_keys = 0
 
 var anim_tree
 
 const UP = Vector2(0, -1)
 const JUMP_VEL = -200
 const MAX_SPEED = 150
+const MAX_KEYS = 3
 
 var velocity = Vector2()
 var move_speed = 500
 var gravity = 500
 var move_dir = 1
-var can_attack
-var can_jump 
 var is_grounded
 var is_unlocked
 var can_run
-
-var is_zoomed_in = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,11 +33,19 @@ func _ready():
 	is_unlocked = false
 	anim_tree = $AnimationTree.get("parameters/playback")
 	
+	print("Has backpack? " + str(has_backpack))
+	if has_backpack:
+		anim_tree.start("run_locked_backpack")
+	else:
+		anim_tree.start("run_locked")
+
+		
 	# Connecting signals
 	connect("player_death", get_parent(), "_on_Player_death")
 	connect("player_get_collectable", get_parent(), "_on_Player_get_Collectable")
 
 func _physics_process(delta):
+	print(can_run)
 	check_state()
 	if can_run:
 		handle_move()
@@ -57,9 +63,7 @@ func wait_for_keypress():
 		can_run = true
 
 func apply_movement():
-	play_animation()
-	is_grounded = is_grounded()
-	$GroundedLabel.text = str(is_grounded)
+	$GroundedLabel.text = str(is_grounded())
 
 	if $Rig/ForwardRaycast.is_colliding():
 		flip()
@@ -73,25 +77,38 @@ func apply_movement():
 			print("player died! lol")
 			die()
 
+func check_state():
+	$UnlockedLabel.text = str(is_unlocked)
+	if is_unlocked:
+		if has_backpack:
+			anim_tree.travel("run_unlocked_backpack")
+		else:
+			anim_tree.travel("run_unlocked")
+	else:
+		if has_backpack:
+			anim_tree.travel("run_locked_backpack")
+		else:
+			anim_tree.travel("run_locked")
+
 func apply_gravity(delta):
 	velocity.y += gravity * delta
 
 func _input(event):
 	if event.is_action_pressed("restart"):
 		restart_stage()
-	if event.is_action_pressed("jump") && can_jump:
+	if event.is_action_pressed("jump") && is_grounded():
 		if is_unlocked:
-			if PlayerVariables.has_backpack:
+			if has_backpack:
 				anim_tree.travel("jump_unlocked_backpack")
 			else:
 				anim_tree.travel("jump_unlocked")
 			jump()
 		else:
-			if PlayerVariables.has_backpack:
+			if has_backpack:
 				anim_tree.travel("jump_locked_backpack")
 			else:
 				anim_tree.travel("jump_locked")
-			jump()
+			#jump()
 	elif event.is_action_released("jump"):
 		velocity.y *= 0.4
 
@@ -109,27 +126,16 @@ func jump():
 	SoundManager.play_se("player_jump")
 	SoundManager.set_volume_db(-30, "player_jump")
 	velocity.y = JUMP_VEL
-	is_unlocked = false # Lock every time the player jumps
+	
+	if has_backpack:
+		dec_keys()
+		if num_of_keys == 0:
+			is_unlocked = false
+	else:
+		is_unlocked = false # Lock every time the player jumps
 
 func is_grounded():
 	return true if $Rig/GroundedRaycast.is_colliding() else false
-
-func check_state():
-	$UnlockedLabel.text = str(is_unlocked)
-	if is_unlocked:
-		if PlayerVariables.has_backpack:
-			anim_tree.travel("run_unlocked_backpack")
-		else:
-			anim_tree.travel("run_unlocked")
-		can_jump = true
-		can_attack = true
-	else:
-		if PlayerVariables.has_backpack:
-			anim_tree.travel("run_locked_backpack")
-		else:
-			anim_tree.travel("run_locked")
-		can_jump = false
-		can_attack = false
 
 # Changes move_dir and flips character Rig and CollisionShape
 func flip():
@@ -142,18 +148,6 @@ func check_facing_direction():
 		$Rig.scale.x = 1
 	elif move_dir == -1:
 		$Rig.scale.x = -1
-
-func play_animation():
-	if is_unlocked:
-		if PlayerVariables.has_backpack:
-			anim_tree.travel("run_unlocked_backpack")
-		else:
-			anim_tree.travel("run_unlocked")
-	else:
-		if PlayerVariables.has_backpack:
-			anim_tree.travel("run_locked_backpack")
-		else:
-			anim_tree.travel("run_locked")
 
 func die():
 	emit_signal("player_death")
@@ -171,8 +165,26 @@ func play_walk_sound():
 
 func _on_Player_get_backpack():
 	anim_tree.stop()
-	PlayerVariables.has_backpack = true
+	has_backpack = true
 	anim_tree.start("run_locked_backpack")
 
+func inc_keys():
+	if has_backpack:
+		num_of_keys += 1
+		num_of_keys = clamp(num_of_keys, 0, MAX_KEYS)
+		$Rig/KeysLabel.text = str(num_of_keys)
+		$Rig/Keys.get_node("Key" + str(num_of_keys)).visible = true
 
+func dec_keys():
+	if has_backpack:
+		$Rig/Keys.get_node("Key" + str(num_of_keys)).visible = false
+		num_of_keys -= 1
+		$Rig/KeysLabel.text = str(num_of_keys)
+		print(num_of_keys)
+		num_of_keys = clamp(num_of_keys, 0, MAX_KEYS)
+
+func clear_keys():
+	for key in $Rig/Keys.get_children():
+		key.visible = false
+	pass
 
