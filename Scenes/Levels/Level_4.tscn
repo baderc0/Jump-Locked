@@ -15,11 +15,9 @@ tile_data = PoolIntArray( -65540, 0, 0, -65539, 0, 2, -4, 0, 131072, -3, 0, 1310
 position = Vector2( 0.396851, 0 )
 
 [node name="JumpKey3" parent="Interactables/Keys" index="0" instance=ExtResource( 3 )]
-visible = true
 position = Vector2( 122.707, 163.657 )
 
 [node name="JumpKey4" parent="Interactables/Keys" index="1" instance=ExtResource( 3 )]
-visible = true
 position = Vector2( -59.0194, 194.77 )
 
 [node name="Star2" parent="Interactables/Collectables" index="0" instance=ExtResource( 4 )]

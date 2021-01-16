@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal trigger_cutscene
 signal player_death
+signal player_restart
 signal player_get_collectable
 
 onready var sprite = $Sprite
@@ -119,10 +120,6 @@ func check_state():
 		can_jump = false
 		can_attack = false
 
-func get_key():
-	print("key in player")
-	is_unlocked = true
-
 # Changes move_dir and flips character Rig and CollisionShape
 func flip():
 	SoundManager.play_se("player_hit_wall")
@@ -144,24 +141,12 @@ func play_animation():
 
 func die():
 	emit_signal("player_death")
-	is_unlocked = false
-	self.move_dir = 1
-	#self.global_position = spawn_pos
 
 func restart_stage():
-	emit_signal("player_death")          
-	is_unlocked = false
-	can_run = false
-	velocity.x = 0
-	pass
+	emit_signal("player_restart")          
 
 func get_num_of_Collectables():
 	return collectables
-
-func get_collectable():
-	print("player get collectable")
-	collectables += 1
-	emit_signal("player_get_collectable")
 
 func play_walk_sound():
 	pass
