@@ -1,10 +1,64 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Levels/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Interactables/Portal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Environment/LavaWorld.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Environment/Grass2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Interactables/JumpKey.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Art/Player/backpack_ground.png" type="Texture" id=6]
+[ext_resource path="res://Art/Player/locke_spritesheet.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 318.39, 86.7696 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "backpack_cutscene"
+length = 5.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/LockeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.4, 2.8, 3.2, 3.6, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 2, 3, 4, 5, 2, 3, 4, 0, 1, 0, 1, 0, 1, 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/LockeSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.4, 2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 515.958, 40.0081 ), Vector2( 600, 40.008 ), Vector2( 625, 40.008 ), Vector2( 625, 40.008 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("AnimationPlayer/BackpackCamera")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.001, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "clear_current"
+}, {
+"args": [  ],
+"method": "make_current"
+}, {
+"args": [  ],
+"method": "clear_current"
+} ]
+}
 
 [node name="Grass_Lava_Transition" instance=ExtResource( 1 )]
 
@@ -16,7 +70,7 @@ cell_size = Vector2( 16, 16 )
 tile_data = PoolIntArray( 131129, 0, 0, 131130, 0, 1, 131131, 0, 1, 131132, 0, 1, 131133, 0, 1, 131134, 0, 2, 196664, 0, 0, 196665, 0, 262145, 196666, 0, 65537, 196667, 0, 65537, 196668, 0, 65537, 196669, 0, 65537, 196670, 0, 262144, 196671, 0, 1, 196672, 0, 2, 262194, 0, 0, 262195, 0, 2, 262197, 0, 0, 262198, 0, 1, 262199, 0, 1, 262200, 0, 262145, 262201, 0, 65537, 262202, 0, 65537, 262203, 0, 65537, 262204, 0, 65537, 262205, 0, 65537, 262206, 0, 65537, 262207, 0, 65537, 262208, 0, 262144, 262209, 0, 2, 327725, 0, 3, 327729, 0, 0, 327730, 0, 262145, 327731, 0, 262144, 327732, 0, 1, 327733, 0, 262145, 327734, 0, 65537, 327735, 0, 65537, 327736, 0, 65537, 327737, 0, 65537, 327738, 0, 65537, 327739, 0, 65537, 327740, 0, 65537, 327741, 0, 65537, 327742, 0, 65537, 327743, 0, 65537, 327744, 0, 65537, 327745, 0, 262144, 327746, 0, 2, 393261, 0, 0, 393262, 0, 196612, 393264, 0, 0, 393265, 0, 262145, 393266, 0, 65537, 393267, 0, 65537, 393268, 0, 65537, 393269, 0, 196608, 393270, 0, 131073, 393271, 0, 131073, 393272, 0, 131073, 393273, 0, 131073, 393274, 0, 131073, 393275, 0, 131073, 393276, 0, 196609, 393277, 0, 65537, 393278, 0, 65537, 393279, 0, 65537, 393280, 0, 65537, 393281, 0, 65537, 393282, 0, 262144, 393283, 0, 2, 458797, 0, 65539, 458799, 0, 196610, 458800, 0, 0, 458801, 0, 0, 458802, 0, 131073, 458803, 0, 131073, 458804, 0, 131073, 458805, 0, 131074, 458812, 0, 65536, 458813, 0, 65537, 458814, 0, 65537, 458815, 0, 65537, 458816, 0, 65537, 458817, 0, 65537, 458818, 0, 65537, 458819, 0, 262144, 458820, 0, 2, 524333, 0, 0, 524334, 0, 196612, 524337, 0, 131075, 524347, 0, 196610, 524348, 0, 0, 524349, 0, 65537, 524350, 0, 65537, 524351, 0, 65537, 524352, 0, 65537, 524353, 0, 65537, 524354, 0, 65537, 524355, 0, 65537, 524356, 0, 262144, 524357, 0, 2, 589884, 0, 131072, 589885, 0, 196609, 589886, 0, 65537, 589887, 0, 65537, 589888, 0, 196608, 589889, 0, 131073, 589890, 0, 196609, 589891, 0, 65537, 589892, 0, 65537, 589893, 0, 262144, 589894, 0, 2, 655421, 0, 131072, 655422, 0, 131073, 655423, 0, 196609, 655424, 0, 65538, 655426, 0, 131072, 655427, 0, 131073, 655428, 0, 196609, 655429, 0, 65537, 655430, 0, 262144, 655431, 0, 2, 720959, 0, 131072, 720960, 0, 131074, 720964, 0, 131072, 720965, 0, 131073, 720966, 0, 131073, 720967, 0, 0, 720968, 0, 2, 786503, 0, 65536, 786504, 0, 65538, 852039, 0, 131072, 852040, 0, 0, 852041, 0, 1, 852042, 0, 1, 852043, 0, 1, 852044, 0, 1, 852045, 0, 1, 852046, 0, 2, 917576, 0, 65536, 917577, 0, 65537, 917578, 0, 65537, 917579, 0, 65537, 917580, 0, 65537, 917581, 0, 65537, 917582, 0, 262144, 917583, 0, 1, 917584, 0, 2, 917586, 0, 0, 917587, 0, 2, 983112, 0, 131072, 983113, 0, 131073, 983114, 0, 131073, 983115, 0, 131073, 983116, 0, 131073, 983117, 0, 0, 983118, 0, 131073, 983119, 0, 196609, 983120, 0, 262144, 983121, 0, 1, 983122, 0, 262145, 983123, 0, 262144, 983124, 0, 1, 983125, 0, 2, 1048653, 0, 131075, 1048655, 0, 65536, 1048656, 0, 65537, 1048657, 0, 65537, 1048658, 0, 65537, 1048659, 0, 65537, 1048660, 0, 65537, 1048661, 0, 262144, 1048662, 0, 1, 1048663, 0, 0, 1048664, 0, 196612, 1114191, 0, 131072, 1114192, 0, 131073, 1114193, 0, 131073, 1114194, 0, 131073, 1114195, 0, 131073, 1114196, 0, 131073, 1114197, 0, 131073, 1114198, 0, 131073, 1114199, 0, 131074 )
 
 [node name="PlayerSpawn" parent="." index="2"]
-position = Vector2( -96.3257, -49.9467 )
+position = Vector2( 120.554, -10.2964 )
 
 [node name="JumpKey" parent="Interactables/Keys" index="0" instance=ExtResource( 5 )]
 position = Vector2( 205.567, -12.1862 )
@@ -26,3 +80,33 @@ position = Vector2( 775.694, 34.0631 )
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 2 )]
 position = Vector2( 1227.11, 179.797 )
+
+[node name="Backpack" type="Sprite" parent="." index="4"]
+position = Vector2( 636.666, 45.9017 )
+texture = ExtResource( 6 )
+
+[node name="BackpackArea" type="Area2D" parent="Backpack" index="0"]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Backpack/BackpackArea" index="0"]
+position = Vector2( -195.575, 1.03149 )
+scale = Vector2( 0.617856, 1.04832 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+pause_mode = 2
+anims/backpack_cutscene = SubResource( 2 )
+
+[node name="BackpackCamera" type="Camera2D" parent="AnimationPlayer" index="0"]
+position = Vector2( 636.89, 45.9871 )
+zoom = Vector2( 0.2, 0.2 )
+
+[node name="LockeSprite" type="Sprite" parent="AnimationPlayer" index="1"]
+position = Vector2( 515.958, 40.0081 )
+texture = ExtResource( 7 )
+vframes = 8
+hframes = 6
+
+[node name="BackpackAnimationEnd" type="Position2D" parent="." index="6"]
+position = Vector2( 648.986, 34.2324 )
+[connection signal="body_entered" from="Backpack/BackpackArea" to="." method="_on_BackpackArea_body_entered"]

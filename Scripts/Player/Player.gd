@@ -8,7 +8,7 @@ signal player_get_collectable
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
-
+var has_backpack = false
 var collectables = 0
 
 var anim_tree
@@ -81,11 +81,16 @@ func _input(event):
 		restart_stage()
 	if event.is_action_pressed("jump") && can_jump:
 		if is_unlocked:
-			print("jump unlock")
-			anim_tree.travel("jump_unlocked")
+			if PlayerVariables.has_backpack:
+				anim_tree.travel("jump_unlocked_backpack")
+			else:
+				anim_tree.travel("jump_unlocked")
 			jump()
 		else:
-			anim_tree.travel("jump_locked")
+			if PlayerVariables.has_backpack:
+				anim_tree.travel("jump_locked_backpack")
+			else:
+				anim_tree.travel("jump_locked")
 			jump()
 	elif event.is_action_released("jump"):
 		velocity.y *= 0.4
@@ -112,11 +117,17 @@ func is_grounded():
 func check_state():
 	$UnlockedLabel.text = str(is_unlocked)
 	if is_unlocked:
-		anim_tree.travel("run_unlocked")
+		if PlayerVariables.has_backpack:
+			anim_tree.travel("run_unlocked_backpack")
+		else:
+			anim_tree.travel("run_unlocked")
 		can_jump = true
 		can_attack = true
 	else:
-		anim_tree.travel("run_locked")
+		if PlayerVariables.has_backpack:
+			anim_tree.travel("run_locked_backpack")
+		else:
+			anim_tree.travel("run_locked")
 		can_jump = false
 		can_attack = false
 
@@ -134,10 +145,15 @@ func check_facing_direction():
 
 func play_animation():
 	if is_unlocked:
-		anim_tree.travel("run_unlocked")
+		if PlayerVariables.has_backpack:
+			anim_tree.travel("run_unlocked_backpack")
+		else:
+			anim_tree.travel("run_unlocked")
 	else:
-		anim_tree.travel("run_locked")
-	pass
+		if PlayerVariables.has_backpack:
+			anim_tree.travel("run_locked_backpack")
+		else:
+			anim_tree.travel("run_locked")
 
 func die():
 	emit_signal("player_death")
@@ -153,6 +169,10 @@ func play_walk_sound():
 	#SoundManager.play_se("player_walk_2")
 	#SoundManager.set_volume_db(-30, "player_walk_2")
 
+func _on_Player_get_backpack():
+	anim_tree.stop()
+	PlayerVariables.has_backpack = true
+	anim_tree.start("run_locked_backpack")
 
 
 

@@ -1,7 +1,6 @@
 extends Node
 
-var position setget position_set
-
+var has_backpack = false
 
 func _ready():
 	pass
