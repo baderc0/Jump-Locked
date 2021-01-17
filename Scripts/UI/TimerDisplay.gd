@@ -1,26 +1,22 @@
 extends RichTextLabel
 
-var minutes = 0
-var seconds = 0
-var ms = 0
+var time = 0
+var timer_on = true
 
 func _process(delta):
-
-	if ms > 9:
-		seconds += 1
-		ms = 0
+	if(timer_on):
+		time += delta
+		
+	var mils = fmod(time,1)*1000
+	var secs = fmod(time,60)
+	var mins = fmod(time, 60*60) / 60
+	var hr = fmod(fmod(time,3600 * 60) / 3600,24)
+	var dy = fmod(time,12960000) / 86400
 	
-	if seconds > 59:
-		minutes += 1
-		seconds = 0
-
-	set_text("%02d:%02d.%02d" % [minutes, seconds, ms])
-
-
-func _on_Timer_timeout(): 
-	ms += 1
+	var time_passed = "%02d:%02d.%03d" % [mins,secs,mils]
+	text = time_passed
+	
+	pass
 
 func restart_timer():
-	minutes = 0
-	seconds = 0
-	ms = 0
+	time = 0

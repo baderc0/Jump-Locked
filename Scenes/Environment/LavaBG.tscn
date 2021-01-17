@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="LavaBG" type="ColorRect"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_scale = Vector2( 9.57369, 5.13182 )
+color = Color( 0.643137, 0.341176, 0.341176, 0.756863 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

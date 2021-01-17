@@ -66,6 +66,12 @@ func _on_get_JumpKey():
 	$Player.inc_keys()
 	$Player.is_unlocked = true
 
+func _process(delta):
+	if !$Player.can_run:
+		$UI/TimerDisplay.timer_on = false
+	else:
+		$UI/TimerDisplay.timer_on = true
+
 func _on_get_Collectable():
 	$Player.collectables += 1
 	print(str($Player.collectables))
@@ -137,3 +143,7 @@ func _on_BackpackArea_body_entered(body):
 	get_tree().paused = false
 	emit_signal("get_backpack")
 	$Player.global_position = $BackpackAnimationEnd.position
+
+
+func _on_OutOfBounds_body_entered(body):
+	_on_Player_death()

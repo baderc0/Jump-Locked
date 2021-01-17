@@ -12,6 +12,8 @@ var has_backpack = false
 var collectables = 0
 var num_of_keys = 0
 
+var var_jump_count = 0 
+
 var anim_tree
 
 const UP = Vector2(0, -1)
@@ -33,7 +35,6 @@ func _ready():
 	is_unlocked = false
 	anim_tree = $AnimationTree.get("parameters/playback")
 	
-	print("Has backpack? " + str(has_backpack))
 	if has_backpack:
 		anim_tree.start("run_locked_backpack")
 	else:
@@ -45,7 +46,6 @@ func _ready():
 	connect("player_get_collectable", get_parent(), "_on_Player_get_Collectable")
 
 func _physics_process(delta):
-	print(can_run)
 	check_state()
 	if can_run:
 		handle_move()
@@ -64,6 +64,9 @@ func wait_for_keypress():
 
 func apply_movement():
 	$GroundedLabel.text = str(is_grounded())
+	$VelocityLabel.text = str(velocity.y)
+	if is_grounded():
+		var_jump_count = 0
 
 	if $Rig/ForwardRaycast.is_colliding():
 		flip()
@@ -108,9 +111,13 @@ func _input(event):
 				anim_tree.travel("jump_locked_backpack")
 			else:
 				anim_tree.travel("jump_locked")
-			#jump()
-	elif event.is_action_released("jump"):
-		velocity.y *= 0.4
+	elif event.is_action_released("jump") && !is_grounded():
+		if var_jump_count == 0:
+			if velocity.y < -25:
+				velocity.y =  0
+				var_jump_count += 1
+			
+		#velocity.y *= 0.4
 
 func handle_move():
 	velocity.x = lerp(velocity.x, MAX_SPEED * move_dir, get_h_weight())
@@ -124,7 +131,6 @@ func update_move_dir():
 
 func jump():
 	SoundManager.play_se("player_jump")
-	SoundManager.set_volume_db(-30, "player_jump")
 	velocity.y = JUMP_VEL
 	
 	if has_backpack:
@@ -135,12 +141,14 @@ func jump():
 		is_unlocked = false # Lock every time the player jumps
 
 func is_grounded():
-	return true if $Rig/GroundedRaycast.is_colliding() else false
+	for ray in $Rig/GroundedRaycasts.get_children():
+		if ray.is_colliding():
+			return true
+	return false
 
 # Changes move_dir and flips character Rig and CollisionShape
 func flip():
 	SoundManager.play_se("player_hit_wall")
-	SoundManager.set_volume_db(-30, "player_hit_wall")
 	move_dir = -move_dir
 	
 func check_facing_direction():

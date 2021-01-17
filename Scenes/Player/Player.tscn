@@ -425,7 +425,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VelocityLabel" type="Label" parent="."]
+margin_left = -16.8325
+margin_top = -36.5094
+margin_right = 23.1675
+margin_bottom = -15.5094
+custom_fonts/font = SubResource( 46 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="UnlockedLabel" type="Label" parent="."]
+visible = false
 margin_left = -19.3285
 margin_top = -38.7712
 margin_right = 20.6715
@@ -444,7 +455,7 @@ one_shot = true
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 6
-frame = 28
+frame = 26
 
 [node name="ForwardRaycast" type="RayCast2D" parent="Rig"]
 position = Vector2( 0, 2 )
@@ -452,12 +463,6 @@ rotation = -1.5708
 scale = Vector2( 0.5, 0.5 )
 enabled = true
 cast_to = Vector2( 0, 15 )
-collision_mask = 16
-
-[node name="GroundedRaycast" type="RayCast2D" parent="Rig"]
-scale = Vector2( 0.324, 1 )
-enabled = true
-cast_to = Vector2( 0, 10 )
 collision_mask = 16
 
 [node name="KeysLabel" type="Label" parent="Rig"]
@@ -487,6 +492,28 @@ texture = ExtResource( 4 )
 visible = false
 position = Vector2( 9.555, -13.835 )
 texture = ExtResource( 4 )
+
+[node name="GroundedRaycasts" type="Node2D" parent="Rig"]
+
+[node name="GroundedRaycast" type="RayCast2D" parent="Rig/GroundedRaycasts"]
+scale = Vector2( 0.166, 1 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 16
+
+[node name="GroundedRaycast2" type="RayCast2D" parent="Rig/GroundedRaycasts"]
+position = Vector2( -3, 0 )
+scale = Vector2( 0.166, 1 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 16
+
+[node name="GroundedRaycast3" type="RayCast2D" parent="Rig/GroundedRaycasts"]
+position = Vector2( 3, 0 )
+scale = Vector2( 0.166, 1 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 16
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -1 )

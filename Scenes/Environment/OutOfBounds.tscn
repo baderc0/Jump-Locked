@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="OutOfBounds" type="Area2D"]
+collision_layer = 16
+
+[node name="Shape" type="CollisionPolygon2D" parent="."]
+position = Vector2( 153108, 282.482 )
+scale = Vector2( 19868.1, 46.8339 )
+build_mode = 1
+polygon = PoolVector2Array( -7.64437, -5.4346, -7.64429, 5.65048, -7.64033, 5.79298, -7.63936, -6.52871, -7.64467, -6.67251, -7.70625, -7.24772, -7.70637, -5.95351, -7.70659, 6.07786, -7.70398, 6.08383, -7.64015, 6.74894, -7.64004, 5.40679, -7.70356, 4.96469, -7.70365, -5.83767 )
