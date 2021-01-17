@@ -191,6 +191,5 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="timeout" from="TimerDisplay/Timer" to="TimerDisplay" method="_on_Timer_timeout"]
 [connection signal="pressed" from="LevelEndPopup/HBoxContainer/RestartButton" to="LevelEndPopup" method="_on_RestartButton_pressed"]
 [connection signal="button_down" from="LevelEndPopup/HBoxContainer/NextLevelButton" to="LevelEndPopup" method="_on_NextLevelButton_button_down"]

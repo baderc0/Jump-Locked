@@ -100,6 +100,7 @@ func _on_Player_death():
 	$Player.move_dir = 1
 	$Player.global_position = $PlayerSpawn.position
 	$Player.num_of_keys = 0
+	$Player.clear_keys()
 	respawn_interactables()    
 
 func _on_Player_restart(): 
@@ -143,7 +144,6 @@ func _on_BackpackArea_body_entered(body):
 	get_tree().paused = false
 	emit_signal("get_backpack")
 	$Player.global_position = $BackpackAnimationEnd.position
-
 
 func _on_OutOfBounds_body_entered(body):
 	_on_Player_death()

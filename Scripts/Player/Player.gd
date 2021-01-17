@@ -40,11 +40,6 @@ func _ready():
 	else:
 		anim_tree.start("run_locked")
 
-		
-	# Connecting signals
-	connect("player_death", get_parent(), "_on_Player_death")
-	connect("player_get_collectable", get_parent(), "_on_Player_get_Collectable")
-
 func _physics_process(delta):
 	check_state()
 	if can_run:
