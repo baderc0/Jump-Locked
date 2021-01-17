@@ -4,6 +4,7 @@ signal trigger_cutscene
 signal player_death
 signal player_restart
 signal player_get_collectable
+signal hit_wall(pos)
 
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
@@ -196,4 +197,3 @@ func clear_keys():
 	for key in $Rig/Keys.get_children():
 		key.visible = false
 	pass
-

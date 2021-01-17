@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="Node2D" type="CPUParticles2D"]
+emitting = false
+amount = 20
+one_shot = true
+speed_scale = 3.1
+explosiveness = 0.75
+lifetime_randomness = 0.15
+initial_velocity = 151.32
+initial_velocity_random = 1.0
+radial_accel = -0.57
+color = Color( 0.901961, 0.803922, 0.156863, 1 )
