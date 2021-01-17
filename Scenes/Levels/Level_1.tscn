@@ -93,7 +93,7 @@ position = Vector2( 444.199, 180.279 )
 position = Vector2( 393.06, 176.798 )
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 3 )]
-position = Vector2( 108.801, 171.147 )
+position = Vector2( 108.801, 177.147 )
 
 [node name="OutOfBounds" parent="." index="6"]
 position = Vector2( -211.9, -167.112 )
