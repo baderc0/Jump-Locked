@@ -416,6 +416,7 @@ position = Vector2( 0, 4 )
 shape = SubResource( 45 )
 
 [node name="GroundedLabel" type="Label" parent="."]
+visible = false
 margin_left = -18.3325
 margin_top = -23.8844
 margin_right = 21.6675
@@ -426,6 +427,7 @@ __meta__ = {
 }
 
 [node name="VelocityLabel" type="Label" parent="."]
+visible = false
 margin_left = -16.8325
 margin_top = -36.5094
 margin_right = 23.1675

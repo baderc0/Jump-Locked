@@ -33,9 +33,6 @@ scale = Vector2( 0.649123, 0.804907 )
 [node name="JumpKey" parent="Interactables/Keys" instance=ExtResource( 5 )]
 position = Vector2( 102.44, 6.45468 )
 
-[node name="JumpKey2" parent="Interactables/Keys" instance=ExtResource( 5 )]
-position = Vector2( 255.94, 5.45468 )
-
 [node name="Collectables" type="Node2D" parent="Interactables"]
 
 [node name="Star" parent="Interactables/Collectables" instance=ExtResource( 6 )]
