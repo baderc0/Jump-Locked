@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Other/Montserrat-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Art/Player/locke_spritesheet.png" type="Texture" id=2]
@@ -379,6 +379,22 @@ extents = Vector2( 3.91339, 4.08117 )
 [sub_resource type="DynamicFont" id=46]
 font_data = ExtResource( 1 )
 
+[sub_resource type="Animation" id=47]
+resource_name = "no_jump"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.266667, 0.266667, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 pause_mode = 1
 collision_mask = 272
@@ -457,7 +473,10 @@ one_shot = true
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 6
-frame = 27
+frame = 26
+
+[node name="InputReactions" type="AnimationPlayer" parent="Rig/Sprite"]
+anims/no_jump = SubResource( 47 )
 
 [node name="ForwardRaycast" type="RayCast2D" parent="Rig"]
 position = Vector2( 0, 2 )

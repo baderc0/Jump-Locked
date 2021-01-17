@@ -94,18 +94,24 @@ func apply_gravity(delta):
 func _input(event):
 	if event.is_action_pressed("restart"):
 		restart_stage()
-	if event.is_action_pressed("jump") && is_grounded():
-		if is_unlocked:
-			if has_backpack:
-				anim_tree.travel("jump_unlocked_backpack")
-			else:
-				anim_tree.travel("jump_unlocked")
-			jump()
-		else:
-			if has_backpack:
-				anim_tree.travel("jump_locked_backpack")
-			else:
-				anim_tree.travel("jump_locked")
+	if event.is_action_pressed("jump"):
+		if is_grounded():
+			if is_unlocked:
+				if has_backpack:
+					anim_tree.travel("jump_unlocked_backpack")
+				else:
+					anim_tree.travel("jump_unlocked")
+				jump()
+			else: # Locked
+				SoundManager.play_se("no_jump")
+				$Rig/Sprite/InputReactions.play("no_jump")
+				if has_backpack:
+					anim_tree.travel("jump_locked_backpack")
+				else:
+					anim_tree.travel("jump_locked")
+		else: # Not grounded
+			SoundManager.play_se("no_jump")
+			$Rig/Sprite/InputReactions.play("no_jump")
 	elif event.is_action_released("jump") && !is_grounded():
 		if var_jump_count == 0:
 			if velocity.y < -25:

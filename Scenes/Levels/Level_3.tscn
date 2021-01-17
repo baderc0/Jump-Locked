@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/Interactables/Portal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Environment/SkyBG.tscn" type="PackedScene" id=9]
 
-[node name="Level_4" instance=ExtResource( 3 )]
+[node name="Level_3" instance=ExtResource( 3 )]
 pause_mode = 2
 
 [node name="Grass2" parent="." index="0" instance=ExtResource( 1 )]

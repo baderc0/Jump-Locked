@@ -45,12 +45,12 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="Text" index="1"]
-margin_left = 446.07
-margin_top = -28.354
-margin_right = 629.07
-margin_bottom = 40.646
+margin_left = 421.173
+margin_top = -22.5269
+margin_right = 604.173
+margin_bottom = 46.4731
 custom_fonts/font = SubResource( 1 )
-text = "Press Z!"
+text = "Press Z / SPACE"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
