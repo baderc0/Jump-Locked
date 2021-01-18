@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scenes/Levels/LevelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Testing Levels/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Interactables/JumpKey.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Environment/Grass2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Interactables/Portal.tscn" type="PackedScene" id=4]
@@ -12,9 +12,11 @@ tile_data = PoolIntArray( -196594, 0, 0, -196593, 0, 2, -65540, 0, 0, -65539, 0,
 
 [node name="JumpKey" parent="Interactables/Collectables" index="0" instance=ExtResource( 2 )]
 position = Vector2( 46.5248, 5.7505 )
+frame = 7
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 4 )]
 position = Vector2( 3.36359, 82.4079 )
+frame = 6
 
 [node name="OutOfBounds" parent="." index="4"]
 position = Vector2( -3555.92, -2278.53 )

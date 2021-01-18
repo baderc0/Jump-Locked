@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Environment/LavaWorld.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Levels/LevelBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Testing Levels/LevelBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Interactables/Portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Interactables/Star.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Interactables/JumpKey.tscn" type="PackedScene" id=5]
@@ -51,15 +51,15 @@ frame = 3
 
 [node name="Star" parent="Interactables/Collectables" index="0" instance=ExtResource( 4 )]
 position = Vector2( 206.361, 196.023 )
-frame = 2
+frame = 5
 
 [node name="Star2" parent="Interactables/Collectables" index="1" instance=ExtResource( 4 )]
 position = Vector2( -174.51, 163.086 )
-frame = 2
+frame = 5
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 3 )]
 position = Vector2( 64.2979, 161.096 )
-frame = 10
+frame = 1
 
 [node name="OutOfBounds" parent="." index="4"]
 position = Vector2( -379.631, -112.162 )

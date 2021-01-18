@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Environment/Grass2.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Levels/LevelBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Testing Levels/LevelBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Other/Montserrat-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/Interactables/Portal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Environment/SkyBG.tscn" type="PackedScene" id=5]
@@ -35,6 +35,7 @@ __meta__ = {
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 4 )]
 position = Vector2( 318.696, 32.7296 )
+frame = 9
 
 [node name="OutOfBounds" parent="." index="5"]
 position = Vector2( -240.381, -178.838 )

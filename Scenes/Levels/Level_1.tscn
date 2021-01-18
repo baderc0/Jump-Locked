@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/Environment/Grass2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Other/Montserrat-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scenes/Interactables/Portal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Levels/LevelBase.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Testing Levels/LevelBase.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Environment/SkyBG.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Interactables/JumpKey.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Environment/Water.tscn" type="PackedScene" id=7]
@@ -85,20 +85,20 @@ __meta__ = {
 
 [node name="JumpKey" parent="Interactables/Keys" index="0" instance=ExtResource( 6 )]
 position = Vector2( 318.905, 21.2132 )
-frame = 3
+frame = 6
 
 [node name="JumpKey2" parent="Interactables/Keys" index="1" instance=ExtResource( 6 )]
 position = Vector2( 444.199, 180.279 )
-frame = 3
+frame = 6
 
 [node name="Star" parent="Interactables/Collectables" index="0" instance=ExtResource( 8 )]
 position = Vector2( 393.06, 176.798 )
 animation = "updown"
-frame = 5
+frame = 0
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 3 )]
 position = Vector2( 108.801, 176.147 )
-frame = 4
+frame = 5
 
 [node name="OutOfBounds" parent="." index="6"]
 position = Vector2( -211.9, -167.112 )

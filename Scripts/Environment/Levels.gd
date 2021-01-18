@@ -46,6 +46,7 @@ func _ready():
 	$Player.connect("player_death", self, "_on_Player_death")
 	$Player.connect("player_restart", self, "_on_Player_restart")
 	connect("get_backpack", $Player, "_on_Player_get_backpack")
+	$UI.connect("pause_screen_selected", self, "_on_PauseScreen_button_selected")
 	$UI/LevelEndPopup.connect("restart_button_pressed", self, "_on_restart_button_pressed")
 	$UI/LevelEndPopup.connect("next_level_button_pressed", self, "_on_next_level_button_pressed")
 	
@@ -148,3 +149,6 @@ func _on_BackpackArea_body_entered(body):
 
 func _on_OutOfBounds_body_entered(body):
 	_on_Player_death()
+
+func _on_PauseScreen_button_selected():
+	get_tree().paused = false

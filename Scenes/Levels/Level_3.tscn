@@ -2,10 +2,11 @@
 
 [ext_resource path="res://Scenes/Environment/Grass2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Interactables/JumpKey.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Levels/LevelBase.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Testing Levels/LevelBase.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Interactables/Star.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Interactables/Portal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Environment/SkyBG.tscn" type="PackedScene" id=9]
+
 
 [node name="Level_3" instance=ExtResource( 3 )]
 pause_mode = 2
