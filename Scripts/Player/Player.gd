@@ -66,6 +66,7 @@ func apply_movement():
 
 	if $Rig/ForwardRaycast.is_colliding():
 		flip()
+
 	check_facing_direction()
 	velocity = move_and_slide(velocity, UP)
 	
@@ -106,6 +107,7 @@ func _input(event):
 			else: # Locked
 				SoundManager.play_se("no_jump")
 				$Rig/Sprite/InputReactions.play("no_jump")
+				$Camera2D/ScreenShake.start(0.2, 15, 15, 1)
 				if has_backpack:
 					anim_tree.travel("jump_locked_backpack")
 				else:
@@ -113,6 +115,7 @@ func _input(event):
 		else: # Not grounded
 			SoundManager.play_se("no_jump")
 			$Rig/Sprite/InputReactions.play("no_jump")
+			$Camera2D/ScreenShake.start(0.2, 15, 15, 1)
 	elif event.is_action_released("jump") && !is_grounded():
 		if var_jump_count == 0:
 			if velocity.y < -25:
@@ -132,6 +135,7 @@ func update_move_dir():
 	move_dir =  -int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right"))
 
 func jump():
+	$Camera2D/ScreenShake.start(0.2, 5, 5, 5)
 	SoundManager.play_se("player_jump")
 	velocity.y = JUMP_VEL
 	
@@ -150,6 +154,7 @@ func is_grounded():
 
 # Changes move_dir and flips character Rig and CollisionShape
 func flip():
+	$Camera2D/ScreenShake.start(0.1, 10, 10, 1)
 	SoundManager.play_se("player_hit_wall")
 	move_dir = -move_dir
 	

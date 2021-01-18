@@ -1,9 +1,10 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Other/Montserrat-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Art/Player/locke_spritesheet.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=3]
 [ext_resource path="res://Art/Player/key_progress.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/ScreenShake.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fall_locked"
@@ -540,3 +541,6 @@ collision_mask = 16
 position = Vector2( 0, -1 )
 current = true
 zoom = Vector2( 0.3, 0.3 )
+
+[node name="ScreenShake" parent="Camera2D" instance=ExtResource( 5 )]
+position = Vector2( 0, 1 )
