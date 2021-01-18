@@ -31,30 +31,39 @@ position = Vector2( -12.2066, 46.3856 )
 
 [node name="JumpKey" parent="Interactables/Keys" instance=ExtResource( 3 )]
 position = Vector2( 184.718, 52.6169 )
+frame = 7
 
 [node name="JumpKey2" parent="Interactables/Keys" instance=ExtResource( 3 )]
 position = Vector2( 316.361, 167.612 )
+frame = 7
 
 [node name="JumpKey3" parent="Interactables/Keys" instance=ExtResource( 3 )]
 position = Vector2( 411.146, 200.049 )
+frame = 7
 
 [node name="JumpKey5" parent="Interactables/Keys" instance=ExtResource( 3 )]
 position = Vector2( 141.196, 295.186 )
+frame = 7
 
 [node name="JumpKey4" parent="Interactables/Keys" instance=ExtResource( 3 )]
 position = Vector2( 214.416, 406.567 )
+frame = 7
 
 [node name="JumpKey6" parent="Interactables/Keys" instance=ExtResource( 3 )]
 position = Vector2( 377.587, 375.096 )
+frame = 7
 
 [node name="JumpKey7" parent="Interactables/Keys" instance=ExtResource( 3 )]
 position = Vector2( 623.661, 356.712 )
+frame = 7
 
 [node name="JumpKey8" parent="Interactables/Keys" instance=ExtResource( 3 )]
 position = Vector2( 48.679, 439.956 )
+frame = 7
 
 [node name="JumpKey9" parent="Interactables/Keys" instance=ExtResource( 3 )]
 position = Vector2( 296.292, 455.974 )
+frame = 7
 
 [node name="Checkpoints" type="Node2D" parent="Interactables"]
 
@@ -62,17 +71,21 @@ position = Vector2( 296.292, 455.974 )
 
 [node name="Star" parent="Interactables/Collectables" instance=ExtResource( 4 )]
 position = Vector2( 496.033, 193.324 )
+frame = 0
 
 [node name="Star2" parent="Interactables/Collectables" instance=ExtResource( 4 )]
 position = Vector2( -19.1325, 400.057 )
+frame = 0
 
 [node name="Star3" parent="Interactables/Collectables" instance=ExtResource( 4 )]
 position = Vector2( 657.06, 354.759 )
+frame = 0
 
 [node name="Portals" type="Node2D" parent="Interactables"]
 
 [node name="Portal" parent="Interactables/Portals" instance=ExtResource( 5 )]
-position = Vector2( 504.509, 345.439 )
+position = Vector2( 504.509, 352.439 )
+frame = 2
 
 [node name="BG" type="Node2D" parent="."]
 show_behind_parent = true

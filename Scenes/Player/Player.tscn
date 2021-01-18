@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Other/Montserrat-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Art/Player/locke_spritesheet.png" type="Texture" id=2]
@@ -396,6 +396,22 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.266667, 0.266667, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=48]
+resource_name = "yes"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.266667, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 pause_mode = 1
 collision_mask = 272
@@ -478,6 +494,7 @@ frame = 26
 
 [node name="InputReactions" type="AnimationPlayer" parent="Rig/Sprite"]
 anims/no_jump = SubResource( 47 )
+anims/yes = SubResource( 48 )
 
 [node name="ForwardRaycast" type="RayCast2D" parent="Rig"]
 position = Vector2( 0, 2 )

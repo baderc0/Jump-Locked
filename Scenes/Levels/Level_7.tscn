@@ -19,9 +19,11 @@ margin_bottom = -133.447
 
 [node name="Star" parent="Interactables/Collectables" index="0" instance=ExtResource( 4 )]
 position = Vector2( 10.6823, -53.1697 )
+frame = 4
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 3 )]
-position = Vector2( 67.1184, 11.3253 )
+position = Vector2( 67.1184, 17.3253 )
+frame = 6
 
 [node name="OutOfBounds" parent="." index="4"]
 position = Vector2( -224.053, -161.989 )

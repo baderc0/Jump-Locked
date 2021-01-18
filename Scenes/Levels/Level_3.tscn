@@ -24,9 +24,11 @@ position = Vector2( 0.396851, 0 )
 
 [node name="JumpKey3" parent="Interactables/Keys" index="0" instance=ExtResource( 2 )]
 position = Vector2( 122.707, 163.657 )
+frame = 7
 
 [node name="JumpKey4" parent="Interactables/Keys" index="1" instance=ExtResource( 2 )]
 position = Vector2( -59.0194, 194.77 )
+frame = 7
 
 [node name="Star2" parent="Interactables/Collectables" index="0" instance=ExtResource( 6 )]
 position = Vector2( 249.525, 162.338 )
@@ -38,7 +40,7 @@ position = Vector2( -388.26, 29.8477 )
 position = Vector2( -1.41422, -10.6066 )
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 7 )]
-position = Vector2( 6.36334, 338.93 )
+position = Vector2( 6.36334, 346.93 )
 
 [node name="OutOfBounds" parent="." index="4"]
 position = Vector2( -398.268, -79.7415 )

@@ -54,9 +54,14 @@ func wait_for_keypress():
 	if Input.is_action_pressed("move_left"):
 		move_dir = -1
 		can_run = true
+		$Rig/Sprite/InputReactions.play("yes")
 	elif Input.is_action_pressed("move_right"):
 		move_dir = 1
 		can_run = true
+		$Rig/Sprite/InputReactions.play("yes")
+	elif Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_accept"):
+		$Rig/Sprite/InputReactions.play("no_jump")
+		$Camera2D/ScreenShake.start(0.1, 5, 7, 1)
 
 func apply_movement():
 	$GroundedLabel.text = str(is_grounded())
@@ -96,6 +101,7 @@ func apply_gravity(delta):
 func _input(event):
 	if event.is_action_pressed("restart"):
 		restart_stage()
+		$Camera2D/ScreenShake.start(0.1, 10, 5, 1)
 	if event.is_action_pressed("jump"):
 		if is_grounded():
 			if is_unlocked:
@@ -107,7 +113,7 @@ func _input(event):
 			else: # Locked
 				SoundManager.play_se("no_jump")
 				$Rig/Sprite/InputReactions.play("no_jump")
-				$Camera2D/ScreenShake.start(0.2, 15, 15, 1)
+				$Camera2D/ScreenShake.start(0.1, 5, 7, 1)
 				if has_backpack:
 					anim_tree.travel("jump_locked_backpack")
 				else:
@@ -115,7 +121,7 @@ func _input(event):
 		else: # Not grounded
 			SoundManager.play_se("no_jump")
 			$Rig/Sprite/InputReactions.play("no_jump")
-			$Camera2D/ScreenShake.start(0.2, 15, 15, 1)
+			$Camera2D/ScreenShake.start(0.1, 5, 7, 1)
 	elif event.is_action_released("jump") && !is_grounded():
 		if var_jump_count == 0:
 			if velocity.y < -25:
@@ -135,7 +141,7 @@ func update_move_dir():
 	move_dir =  -int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right"))
 
 func jump():
-	$Camera2D/ScreenShake.start(0.2, 5, 5, 5)
+	$Camera2D/ScreenShake.start(0.2, 10, 5, 0)
 	SoundManager.play_se("player_jump")
 	velocity.y = JUMP_VEL
 	
@@ -154,7 +160,7 @@ func is_grounded():
 
 # Changes move_dir and flips character Rig and CollisionShape
 func flip():
-	$Camera2D/ScreenShake.start(0.1, 10, 10, 1)
+	$Camera2D/ScreenShake.start(0.1, 7, 7, 1)
 	SoundManager.play_se("player_hit_wall")
 	move_dir = -move_dir
 	
@@ -165,6 +171,7 @@ func check_facing_direction():
 		$Rig.scale.x = -1
 
 func die():
+	$Camera2D/ScreenShake.start(0.1, 5, 7, 1)
 	emit_signal("player_death")
 
 func restart_stage():

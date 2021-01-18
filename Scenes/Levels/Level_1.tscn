@@ -85,15 +85,20 @@ __meta__ = {
 
 [node name="JumpKey" parent="Interactables/Keys" index="0" instance=ExtResource( 6 )]
 position = Vector2( 318.905, 21.2132 )
+frame = 3
 
 [node name="JumpKey2" parent="Interactables/Keys" index="1" instance=ExtResource( 6 )]
 position = Vector2( 444.199, 180.279 )
+frame = 3
 
 [node name="Star" parent="Interactables/Collectables" index="0" instance=ExtResource( 8 )]
 position = Vector2( 393.06, 176.798 )
+animation = "updown"
+frame = 5
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 3 )]
-position = Vector2( 108.801, 177.147 )
+position = Vector2( 108.801, 176.147 )
+frame = 4
 
 [node name="OutOfBounds" parent="." index="6"]
 position = Vector2( -211.9, -167.112 )

@@ -73,6 +73,7 @@ func _process(delta):
 		$UI/TimerDisplay.timer_on = true
 
 func _on_get_Collectable():
+	$Player/Camera2D/ScreenShake.start(0.2, 5, 5, 5)
 	$Player.collectables += 1
 	print(str($Player.collectables))
 
