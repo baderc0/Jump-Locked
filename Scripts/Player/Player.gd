@@ -78,7 +78,7 @@ func apply_movement():
 	# If player touches water
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision.collider.name == "Water":
+		if collision.collider.name == "Water" or collision.collider.name == "Lava":
 			print("player died! lol")
 			die()
 
@@ -99,8 +99,14 @@ func apply_gravity(delta):
 	velocity.y += gravity * delta
 
 func _input(event):
+	if event.is_action_pressed("screenshake_toggle"):
+		if $Camera2D/ScreenShake.on:
+			$Camera2D/ScreenShake.on = false
+		else:
+			$Camera2D/ScreenShake.on = true
+		print("screenshake toggled!: " + str($Camera2D/ScreenShake.on))
 	if event.is_action_pressed("restart"):
-		restart_stage()
+		die()
 		$Camera2D/ScreenShake.start(0.1, 10, 5, 1)
 	if event.is_action_pressed("jump"):
 		if is_grounded():

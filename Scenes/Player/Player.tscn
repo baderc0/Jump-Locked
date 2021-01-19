@@ -490,7 +490,7 @@ one_shot = true
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 6
-frame = 26
+frame = 27
 
 [node name="InputReactions" type="AnimationPlayer" parent="Rig/Sprite"]
 anims/no_jump = SubResource( 47 )

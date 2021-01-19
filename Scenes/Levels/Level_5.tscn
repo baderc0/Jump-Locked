@@ -35,7 +35,7 @@ __meta__ = {
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 4 )]
 position = Vector2( 318.696, 32.7296 )
-frame = 9
+frame = 2
 
 [node name="OutOfBounds" parent="." index="5"]
 position = Vector2( -240.381, -178.838 )

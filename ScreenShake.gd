@@ -7,17 +7,20 @@ var amplitude = 0
 var priority = 0
 onready var camera = get_parent()
 
+var on = true
+
 func start(duration = 0.2, frequency = 15, amplitude = 16, priority = 0):
-	if priority >= self.priority:
-		self.priority = priority
-		self.amplitude = amplitude
+	if on:
+		if priority >= self.priority:
+			self.priority = priority
+			self.amplitude = amplitude
 
-		$Duration.wait_time = duration
-		$Frequency.wait_time = 1 / float(frequency)
-		$Duration.start()
-		$Frequency.start()
+			$Duration.wait_time = duration
+			$Frequency.wait_time = 1 / float(frequency)
+			$Duration.start()
+			$Frequency.start()
 
-		new_shake()
+			new_shake()
 
 func new_shake():
 	var rand = Vector2()
