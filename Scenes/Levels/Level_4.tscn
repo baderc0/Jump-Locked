@@ -71,21 +71,20 @@ frame = 7
 
 [node name="Star" parent="Interactables/Collectables" instance=ExtResource( 4 )]
 position = Vector2( 496.033, 193.324 )
-frame = 0
+frame = 2
 
 [node name="Star2" parent="Interactables/Collectables" instance=ExtResource( 4 )]
 position = Vector2( -19.1325, 400.057 )
-frame = 0
+frame = 2
 
 [node name="Star3" parent="Interactables/Collectables" instance=ExtResource( 4 )]
 position = Vector2( 657.06, 354.759 )
-frame = 0
+frame = 2
 
 [node name="Portals" type="Node2D" parent="Interactables"]
 
 [node name="Portal" parent="Interactables/Portals" instance=ExtResource( 5 )]
 position = Vector2( 504.509, 352.439 )
-frame = 2
 
 [node name="BG" type="Node2D" parent="."]
 show_behind_parent = true

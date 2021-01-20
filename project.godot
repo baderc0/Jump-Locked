@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="My- First- Game- Jam- Winter- 2020"
-run/main_scene="res://Scenes/Environment/World.tscn"
+run/main_scene="res://Scenes/Testing Levels/random3e.tscn"
 
 [autoload]
 

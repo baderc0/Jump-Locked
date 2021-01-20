@@ -5,6 +5,8 @@ signal can_teleport
 var current_level
 signal get_backpack
 
+var death_particle_scene = preload("res://Scenes/Other/PlayerDeathParticle.tscn")
+var jump_particle_scene = preload("res://Scenes/Other/JumpingParticles.tscn")
 
 var player_scene = preload("res://Scenes/Player/Player.tscn")
 var player
@@ -45,6 +47,7 @@ func _ready():
 	$Interactables/Portals/Portal.connect("portal_touched", self, "_on_Portal_touched")
 	$Player.connect("player_death", self, "_on_Player_death")
 	$Player.connect("player_restart", self, "_on_Player_restart")
+	$Player.connect("player_jump", self, "_on_Player_jump")
 	connect("get_backpack", $Player, "_on_Player_get_backpack")
 	$UI.connect("pause_screen_selected", self, "_on_PauseScreen_button_selected")
 	$UI/LevelEndPopup.connect("restart_button_pressed", self, "_on_restart_button_pressed")
@@ -103,6 +106,12 @@ func _on_Portal_touched():
 		$Interactables/Portals/Portal/Label.visible = true
 
 func _on_Player_death():
+	SoundManager.play_se("player_death")
+	var death_particle = death_particle_scene.instance()
+	death_particle.position = $Player.global_position
+	death_particle.one_shot = true
+	death_particle.emitting = true
+	add_child(death_particle)
 	$Player.global_position = $PlayerSpawn.position
 	$Player.num_of_keys = 0
 	$Player.clear_keys()
@@ -114,6 +123,17 @@ func _on_Player_death():
 	$Player.velocity.x = 0
 	$Player.move_dir = 1
 	respawn_interactables()  
+
+func _on_Player_jump(var pos, var move_dir):
+	var jump_particle = jump_particle_scene.instance()
+	jump_particle.position = pos
+	jump_particle.one_shot = true
+	jump_particle.emitting = true
+	
+	# Set gravity depending on player move direction
+	jump_particle.process_material.gravity.x *= -move_dir
+	add_child(jump_particle)
+	pass
 
 func _on_restart_button_pressed():
 	_on_Player_death()
@@ -152,3 +172,4 @@ func _on_OutOfBounds_body_entered(body):
 
 func _on_PauseScreen_button_selected():
 	get_tree().paused = false
+

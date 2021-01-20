@@ -1,6 +1,9 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Art/Environment/lava.png" type="Texture" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 16, 16, 4, 16, 4, 4, 16, 4 )
@@ -50,7 +53,7 @@ points = PoolVector2Array( 12, 16, 4, 16, 4, 0, 12, 0 )
 [sub_resource type="ConvexPolygonShape2D" id=17]
 points = PoolVector2Array( 12, 12, 4, 12, 4, 0, 12, 0 )
 
-[sub_resource type="TileSet" id=1]
+[sub_resource type="TileSet" id=18]
 0/name = "lava.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -173,6 +176,7 @@ points = PoolVector2Array( 12, 12, 4, 12, 4, 0, 12, 0 )
 0/z_index = 0
 
 [node name="Lava" type="TileMap"]
-tile_set = SubResource( 1 )
+material = SubResource( 1 )
+tile_set = SubResource( 18 )
 cell_size = Vector2( 16, 16 )
 format = 1

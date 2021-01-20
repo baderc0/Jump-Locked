@@ -23,43 +23,36 @@ position = Vector2( 0.561218, 1.27092 )
 
 [node name="JumpKey" parent="Interactables/Keys" index="0" instance=ExtResource( 5 )]
 position = Vector2( 31.7615, 6.29544 )
-frame = 4
 
 [node name="JumpKey2" parent="Interactables/Keys" index="1" instance=ExtResource( 5 )]
 position = Vector2( 60.7529, 7.17932 )
-frame = 4
 
 [node name="JumpKey4" parent="Interactables/Keys" index="2" instance=ExtResource( 5 )]
 position = Vector2( -53.6379, 8.062 )
-frame = 4
 
 [node name="JumpKey5" parent="Interactables/Keys" index="3" instance=ExtResource( 5 )]
 position = Vector2( 44.6359, 214.689 )
-frame = 4
 
 [node name="JumpKey6" parent="Interactables/Keys" index="4" instance=ExtResource( 5 )]
 position = Vector2( 18.5681, 214.689 )
-frame = 4
 
 [node name="JumpKey7" parent="Interactables/Keys" index="5" instance=ExtResource( 5 )]
 position = Vector2( -102.913, 198.975 )
-frame = 4
 
 [node name="JumpKey8" parent="Interactables/Keys" index="6" instance=ExtResource( 5 )]
 position = Vector2( 120.005, 168.273 )
-frame = 4
 
 [node name="Star" parent="Interactables/Collectables" index="0" instance=ExtResource( 4 )]
 position = Vector2( 206.361, 196.023 )
-frame = 5
+frame = 0
 
 [node name="Star2" parent="Interactables/Collectables" index="1" instance=ExtResource( 4 )]
 position = Vector2( -174.51, 163.086 )
-frame = 5
+frame = 0
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 3 )]
 position = Vector2( 64.2979, 161.096 )
-frame = 1
+frame = 8
 
 [node name="OutOfBounds" parent="." index="4"]
 position = Vector2( -379.631, -112.162 )

@@ -69,7 +69,7 @@ font_data = ExtResource( 3 )
 [node name="Portal" type="AnimatedSprite"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 13 )
-frame = 3
+frame = 4
 speed_scale = 2.0
 playing = true
 script = ExtResource( 2 )
@@ -89,7 +89,8 @@ __meta__ = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
+position = Vector2( 0.5, -3 )
+collision_layer = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 15 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Other/Montserrat-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Art/Player/locke_spritesheet.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Scenes/ScreenShake.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
-resource_name = "fall_locked"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Rig/Sprite:frame")
@@ -23,7 +22,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "fall_locked_backpack"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Rig/Sprite:frame")
@@ -54,7 +52,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "fall_unlocked_backpack"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Rig/Sprite:frame")
@@ -115,7 +112,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=8]
-resource_name = "jump_locked_backpack"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Rig/Sprite:frame")
@@ -146,7 +142,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=10]
-resource_name = "jump_unlocked_backpack"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Rig/Sprite:frame")
@@ -193,26 +188,8 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 2, 3, 4, 5 ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.15, 0.45 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_walk_sound"
-}, {
-"args": [  ],
-"method": "play_walk_sound"
-} ]
-}
 
 [sub_resource type="Animation" id=13]
-resource_name = "run_locked_backpack"
 length = 0.6
 loop = true
 step = 0.15
@@ -247,7 +224,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=15]
-resource_name = "run_unlocked_backpack"
 length = 0.6
 loop = true
 step = 0.15
@@ -380,8 +356,9 @@ extents = Vector2( 3.91339, 4.08117 )
 [sub_resource type="DynamicFont" id=46]
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=47]
-resource_name = "no_jump"
+[sub_resource type="CanvasItemMaterial" id=47]
+
+[sub_resource type="Animation" id=48]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
@@ -396,8 +373,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.266667, 0.266667, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=48]
-resource_name = "yes"
+[sub_resource type="Animation" id=49]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
@@ -411,6 +387,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.266667, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
+
+[sub_resource type="Environment" id=50]
+background_mode = 4
+ambient_light_color = Color( 0.239216, 0.0901961, 0.0901961, 1 )
+tonemap_mode = 3
+ssao_radius = 1.26
+glow_enabled = true
+glow_intensity = 1.01
+glow_strength = 0.84
+glow_blend_mode = 0
+glow_hdr_threshold = 0.69
+glow_hdr_luminance_cap = 8.59
+glow_hdr_scale = 2.07
+adjustment_brightness = 1.16
+adjustment_contrast = 0.63
+adjustment_saturation = 1.59
 
 [node name="Player" type="KinematicBody2D"]
 pause_mode = 1
@@ -486,23 +478,42 @@ one_shot = true
 
 [node name="Rig" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite" parent="Rig"]
-texture = ExtResource( 2 )
-vframes = 8
-hframes = 6
-frame = 28
+[node name="ForwardRaycasts" type="Node2D" parent="Rig"]
 
-[node name="InputReactions" type="AnimationPlayer" parent="Rig/Sprite"]
-anims/no_jump = SubResource( 47 )
-anims/yes = SubResource( 48 )
-
-[node name="ForwardRaycast" type="RayCast2D" parent="Rig"]
-position = Vector2( 0, 2 )
+[node name="ForwardRaycast" type="RayCast2D" parent="Rig/ForwardRaycasts"]
 rotation = -1.5708
 scale = Vector2( 0.5, 0.5 )
 enabled = true
 cast_to = Vector2( 0, 15 )
 collision_mask = 16
+
+[node name="ForwardRaycast2" type="RayCast2D" parent="Rig/ForwardRaycasts"]
+position = Vector2( 0, 3 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+enabled = true
+cast_to = Vector2( 0, 15 )
+collision_mask = 16
+
+[node name="ForwardRaycast3" type="RayCast2D" parent="Rig/ForwardRaycasts"]
+position = Vector2( 0, 6 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+enabled = true
+cast_to = Vector2( 0, 15 )
+collision_mask = 16
+
+[node name="Sprite" type="Sprite" parent="Rig"]
+modulate = Color( 1.75, 1.75, 1, 1 )
+material = SubResource( 47 )
+texture = ExtResource( 2 )
+vframes = 8
+hframes = 6
+frame = 26
+
+[node name="InputReactions" type="AnimationPlayer" parent="Rig/Sprite"]
+anims/no_jump = SubResource( 48 )
+anims/yes = SubResource( 49 )
 
 [node name="KeysLabel" type="Label" parent="Rig"]
 visible = false
@@ -557,7 +568,10 @@ collision_mask = 16
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -1 )
 current = true
-zoom = Vector2( 0.3, 0.3 )
+zoom = Vector2( 0.35, 0.35 )
 
 [node name="ScreenShake" parent="Camera2D" instance=ExtResource( 5 )]
 position = Vector2( 0, 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 50 )

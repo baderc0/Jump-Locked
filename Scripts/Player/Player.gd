@@ -5,6 +5,7 @@ signal player_death
 signal player_restart
 signal player_get_collectable
 signal hit_wall(pos)
+signal player_jump(pos, move_dir)
 
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
@@ -69,8 +70,9 @@ func apply_movement():
 	if is_grounded():
 		var_jump_count = 0
 
-	if $Rig/ForwardRaycast.is_colliding():
-		flip()
+	for ray in $Rig/ForwardRaycasts.get_children():
+		if ray.is_colliding():
+			flip()
 
 	check_facing_direction()
 	velocity = move_and_slide(velocity, UP)
@@ -138,6 +140,7 @@ func update_move_dir():
 	move_dir =  -int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right"))
 
 func jump():
+	emit_signal("player_jump", self.position, self.move_dir)
 	$Camera2D/ScreenShake.start(0.2, 10, 5, 0)
 	SoundManager.play_se("player_jump")
 	velocity.y = JUMP_VEL

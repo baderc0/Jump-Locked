@@ -41,19 +41,19 @@ frame = 4
 
 [node name="Star" parent="Interactables/Collectables" index="0" instance=ExtResource( 2 )]
 position = Vector2( 0.5, 115.5 )
-frame = 5
+frame = 4
 
 [node name="Star2" parent="Interactables/Collectables" index="1" instance=ExtResource( 2 )]
 position = Vector2( 0.5, 169.5 )
-frame = 5
+frame = 4
 
 [node name="Star3" parent="Interactables/Collectables" index="2" instance=ExtResource( 2 )]
 position = Vector2( 0.5, 225.5 )
-frame = 4
+frame = 3
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 3 )]
 position = Vector2( -0.548615, 289.07 )
-frame = 6
+frame = 5
 
 [node name="OutOfBounds" parent="." index="4"]
 position = Vector2( -548.702, -68.3521 )
