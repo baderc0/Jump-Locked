@@ -55,6 +55,12 @@ func _ready():
 		#connect("can_teleport", s, "_on_Player_can_teleport")
 
 func _input(event):
+	if event.is_action_pressed("screenshake_toggle"):
+		if $Player/Camera2D/ScreenShake.on:
+			$Player/Camera2D/ScreenShake.on = false
+		else:
+			$Player/Camera2D/ScreenShake.on = true
+		print("screenshake toggled!: " + str($Player/Camera2D/ScreenShake.on))
 	if event.is_action_pressed("pause"):
 		if get_tree().paused:
 			get_tree().paused = false
@@ -62,9 +68,13 @@ func _input(event):
 		else:
 			get_tree().paused = true
 			$UI/PauseScreen.show()
+	elif event.is_action_pressed("restart"):
+		_on_Player_death()
+		$Player/Camera2D/ScreenShake.start(0.1, 10, 5, 1)
 
 func _on_get_JumpKey():
 	$Player.inc_keys()
+	$Player.check_keys()
 	$Player.is_unlocked = true
 
 func _process(delta):
@@ -76,7 +86,7 @@ func _process(delta):
 func _on_get_Collectable():
 	$Player/Camera2D/ScreenShake.start(0.2, 5, 5, 5)
 	$Player.collectables += 1
-	print(str($Player.collectables))
+	#print(str($Player.collectables))
 
 func change_level():
 	if next_scene != "":
@@ -93,26 +103,16 @@ func _on_Portal_touched():
 		$Interactables/Portals/Portal/Label.visible = true
 
 func _on_Player_death():
+	$Player.global_position = $PlayerSpawn.position
+	$Player.num_of_keys = 0
+	$Player.clear_keys()
+	$Player.is_unlocked = false
 	$UI/TimerDisplay.restart_timer()
 	$Interactables/Portals/Portal/Label.visible = false
 	$Player.collectables = 0
-	$Player.is_unlocked = false
 	$Player.can_run = false
 	$Player.velocity.x = 0
 	$Player.move_dir = 1
-	$Player.global_position = $PlayerSpawn.position
-	$Player.num_of_keys = 0
-	$Player.clear_keys()
-	respawn_interactables()    
-
-func _on_Player_restart(): 
-	$UI/TimerDisplay.restart_timer()
-	$Interactables/Portals/Portal/Label.visible = false
-	$Player.collectables = 0
-	$Player.is_unlocked = false
-	$Player.global_position = $PlayerSpawn.position
-	$Player.num_of_keys = 0
-	$Player.clear_keys()
 	respawn_interactables()  
 
 func _on_restart_button_pressed():
@@ -129,7 +129,7 @@ func respawn_interactables():
 	for key in get_tree().get_nodes_in_group("keys"):
 		if !key.visible:
 			key.visible = true
-			key.get_node("Area2D").set_collision_mask_bit(0, true)
+			key.alive = true
 	
 	for collectable in get_tree().get_nodes_in_group("collectables"):
 		if !collectable.visible:

@@ -53,9 +53,9 @@ script = ExtResource( 5 )
 
 [node name="TimerDisplay" type="RichTextLabel" parent="."]
 pause_mode = 1
-margin_left = 432.0
+margin_left = 300.0
 margin_top = 513.0
-margin_right = 858.0
+margin_right = 726.0
 margin_bottom = 703.0
 rect_scale = Vector2( 1.01596, 1 )
 custom_fonts/normal_font = SubResource( 1 )

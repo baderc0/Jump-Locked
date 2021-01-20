@@ -42,11 +42,11 @@ func _ready():
 		anim_tree.start("run_locked")
 
 func _physics_process(delta):
-	check_state()
 	if can_run:
 		handle_move()
 	else:
 		wait_for_keypress()
+	check_state()
 	apply_movement()
 	apply_gravity(delta)
 
@@ -99,15 +99,6 @@ func apply_gravity(delta):
 	velocity.y += gravity * delta
 
 func _input(event):
-	if event.is_action_pressed("screenshake_toggle"):
-		if $Camera2D/ScreenShake.on:
-			$Camera2D/ScreenShake.on = false
-		else:
-			$Camera2D/ScreenShake.on = true
-		print("screenshake toggled!: " + str($Camera2D/ScreenShake.on))
-	if event.is_action_pressed("restart"):
-		die()
-		$Camera2D/ScreenShake.start(0.1, 10, 5, 1)
 	if event.is_action_pressed("jump"):
 		if is_grounded():
 			if is_unlocked:
@@ -153,8 +144,7 @@ func jump():
 	
 	if has_backpack:
 		dec_keys()
-		if num_of_keys == 0:
-			is_unlocked = false
+		check_keys()
 	else:
 		is_unlocked = false # Lock every time the player jumps
 
@@ -200,18 +190,22 @@ func inc_keys():
 	if has_backpack:
 		num_of_keys += 1
 		num_of_keys = clamp(num_of_keys, 0, MAX_KEYS)
-		$Rig/KeysLabel.text = str(num_of_keys)
 		$Rig/Keys.get_node("Key" + str(num_of_keys)).visible = true
 
 func dec_keys():
-	if has_backpack:
-		$Rig/Keys.get_node("Key" + str(num_of_keys)).visible = false
-		num_of_keys -= 1
-		$Rig/KeysLabel.text = str(num_of_keys)
-		print(num_of_keys)
-		num_of_keys = clamp(num_of_keys, 0, MAX_KEYS)
+	$Rig/Keys.get_node("Key" + str(num_of_keys)).visible = false
+	num_of_keys -= 1
+	num_of_keys = clamp(num_of_keys, 0, MAX_KEYS)
+	
+	if num_of_keys == 0:
+		print("reached unlcoed menm ein dec keys")
+		is_unlocked = false
 
 func clear_keys():
 	for key in $Rig/Keys.get_children():
 		key.visible = false
 	pass
+
+func check_keys():
+	print(num_of_keys)
+	$Rig/KeysLabel.text = str(num_of_keys)

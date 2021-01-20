@@ -414,7 +414,7 @@ tracks/0/keys = {
 
 [node name="Player" type="KinematicBody2D"]
 pause_mode = 1
-collision_mask = 272
+collision_mask = 2147483648
 script = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -490,7 +490,7 @@ one_shot = true
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 6
-frame = 27
+frame = 28
 
 [node name="InputReactions" type="AnimationPlayer" parent="Rig/Sprite"]
 anims/no_jump = SubResource( 47 )
