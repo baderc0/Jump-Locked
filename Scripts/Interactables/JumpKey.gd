@@ -10,9 +10,13 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if alive:
-		emit_signal("get_key")
-		SoundManager.play_se("key_pickup")
-		SoundManager.set_volume_db(-40, "key_pickup")
-		self.visible = false
-		alive = false
+		emit_signal("get_key", self)
 
+func set_alive(var val):
+	if val:
+		self.visible = true
+		self.alive = true
+	else:
+		self.visible = false
+		self.alive = false
+	print("alive in the key yes")

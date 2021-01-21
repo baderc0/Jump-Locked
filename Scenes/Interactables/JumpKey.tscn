@@ -54,7 +54,7 @@ radius = 4.3981
 [node name="JumpKey" type="AnimatedSprite"]
 frames = SubResource( 9 )
 animation = "idle"
-frame = 3
+frame = 7
 speed_scale = 1.5
 playing = true
 script = ExtResource( 1 )

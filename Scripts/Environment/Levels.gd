@@ -26,6 +26,7 @@ func _ready():
 	current_level = int(name)
 	player = player_scene.instance()
 	player.global_position = $PlayerSpawn.position
+	player.is_unlocked = false
 	if current_level > 5:
 		player.has_backpack = true
 	
@@ -75,10 +76,24 @@ func _input(event):
 		_on_Player_death()
 		$Player/Camera2D/ScreenShake.start(0.1, 10, 5, 1)
 
-func _on_get_JumpKey():
-	$Player.inc_keys()
-	$Player.check_keys()
-	$Player.is_unlocked = true
+func _on_get_JumpKey(var key):
+	if !$Player.has_backpack:  # No backpack
+		if !$Player.is_unlocked: # Locked
+			key.set_alive(false)
+			SoundManager.play_se("key_pickup")
+			SoundManager.set_volume_db(-40, "key_pickup")
+			$Player.is_unlocked = true
+	else: # Has backpack
+		if $Player.num_of_keys < 3:
+			key.set_alive(false)
+			SoundManager.play_se("key_pickup")
+			SoundManager.set_volume_db(-40, "key_pickup")
+			$Player.inc_keys()
+			$Player.check_keys()
+			$Player.is_unlocked = true
+			
+	$Player/Camera2D/ScreenShake.start(0.2, 5, 5, 5)
+
 
 func _process(delta):
 	if !$Player.can_run:
@@ -123,6 +138,7 @@ func _on_Player_death():
 	$Player.velocity.x = 0
 	$Player.move_dir = 1
 	respawn_interactables()  
+
 
 func _on_Player_jump(var pos, var move_dir):
 	var jump_particle = jump_particle_scene.instance()

@@ -12,7 +12,7 @@ tile_data = PoolIntArray( -196594, 0, 0, -196593, 0, 2, -65540, 0, 0, -65539, 0,
 
 [node name="JumpKey" parent="Interactables/Collectables" index="0" instance=ExtResource( 2 )]
 position = Vector2( 46.5248, 5.7505 )
-frame = 7
+frame = 0
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 4 )]
 position = Vector2( 3.36359, 82.4079 )

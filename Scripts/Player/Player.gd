@@ -83,6 +83,9 @@ func apply_movement():
 		if collision.collider.name == "Water" or collision.collider.name == "Lava":
 			print("player died! lol")
 			die()
+		elif collision.collider.is_in_group("lift"):
+			print("lift")
+			self.velocity.y = collision.collider.vel
 
 func check_state():
 	$UnlockedLabel.text = str(is_unlocked)

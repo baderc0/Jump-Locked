@@ -3,42 +3,45 @@
 [ext_resource path="res://Art/Textures/pixel_particle.png" type="Texture" id=1]
 
 [sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
 particles_animation = true
 particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0.150198, 1 )
-colors = PoolColorArray( 0.919922, 0.269508, 0.269508, 1, 1, 1, 1, 1 )
+offsets = PoolRealArray( 0.0158103, 0.462451 )
+colors = PoolColorArray( 0.247059, 0.501961, 0.960784, 0.117647, 0.117647, 0.27451, 0.521569, 0.0156863 )
 
 [sub_resource type="GradientTexture" id=3]
 gradient = SubResource( 2 )
 
 [sub_resource type="ParticlesMaterial" id=4]
 emission_shape = 1
-emission_sphere_radius = 16.78
+emission_sphere_radius = 500.0
 flag_disable_z = true
-spread = 100.0
 gravity = Vector3( 0, -100, 0 )
-initial_velocity = 25.0
-initial_velocity_random = 0.29
-angular_velocity = -98.63
-angular_velocity_random = 0.33
+angular_velocity = 10.0
+angular_velocity_random = 0.16
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-angle = -49.3
-angle_random = 1.0
+scale = 3.0
+scale_random = 0.32
 color_ramp = SubResource( 3 )
-hue_variation = 0.07
-hue_variation_random = 1.0
-anim_speed = 1.0
-anim_speed_random = 0.59
+hue_variation = -0.29
+hue_variation_random = 0.76
+anim_speed = 3.0
+anim_speed_random = 0.41
+anim_offset = 0.03
+anim_offset_random = 0.43
 
-[node name="Node2D" type="Particles2D"]
+[node name="SkyParticles" type="Particles2D"]
+pause_mode = 2
+show_behind_parent = true
 material = SubResource( 1 )
-amount = 20
-explosiveness = 0.52
-randomness = 0.01
+position = Vector2( 20.8865, 40.1902 )
+amount = 200
+lifetime = 4.0
+visibility_rect = Rect2( -2000, -100, 5000, 500 )
 process_material = SubResource( 4 )
 texture = ExtResource( 1 )
