@@ -84,11 +84,11 @@ func apply_movement():
 			print("player died! lol")
 			die()
 		elif collision.collider.is_in_group("lift"):
+			SoundManager.play_se("lift")
 			var_jump_count += 1
-			print("lift")
 			self.velocity.y = collision.collider.vel
 		elif collision.collider.is_in_group("side_lift"):
-			print("hit side lift")
+			SoundManager.play_se("lift")
 			self.velocity.x = collision.collider.vel
 
 func check_state():

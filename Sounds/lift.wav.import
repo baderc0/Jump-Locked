@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lift.wav-46af1b24b0cbe16b1111a47d8345720b.sample"
+
+[deps]
+
+source_file="res://Sounds/lift.wav"
+dest_files=[ "res://.import/lift.wav-46af1b24b0cbe16b1111a47d8345720b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
