@@ -1,118 +1,124 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scenes/Testing Levels/LevelBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Environment/Grass2.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Interactables/Portal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Interactables/JumpKey.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Environment/Grass2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Interactables/Portal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Interactables/LIft.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Testing Levels/LevelBase.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Interactables/Star.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Interactables/LIft.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Other/SkyParticles.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Other/SkyParticles.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Interactables/JumpKey.tscn" type="PackedScene" id=7]
 
-[node name="random3" instance=ExtResource( 1 )]
+[node name="1-7" instance=ExtResource( 4 )]
+next_scene = "res://Scenes/Testing Levels/Grass_Lava_Transition.tscn"
 
-[node name="Grass2" parent="." index="0" instance=ExtResource( 2 )]
+[node name="Grass2" parent="." index="0" instance=ExtResource( 1 )]
 tile_data = PoolIntArray( -983054, 0, 3, -1048564, 0, 3, -917519, 0, 327680, -917518, 0, 393217, -983028, 0, 393216, -983027, 0, 327681, -851984, 0, 327680, -851983, 0, 393217, -917491, 0, 393216, -917490, 0, 327681, -786448, 0, 65539, -786436, 0, 3, -851965, 0, 3, -851954, 0, 393216, -851953, 0, 327681, -720912, 0, 65539, -720900, 0, 131075, -720897, 0, 4, -786432, 0, 6, -786429, 0, 131075, -786417, 0, 65539, -655376, 0, 65539, -720881, 0, 65539, -589840, 0, 65539, -589838, 0, 327680, -589837, 0, 5, -589836, 0, 196610, -589835, 0, 5, -589834, 0, 5, -589833, 0, 5, -589832, 0, 5, -589831, 0, 5, -589830, 0, 5, -589829, 0, 5, -589828, 0, 196609, -589827, 0, 5, -589826, 0, 5, -589825, 0, 5, -655360, 0, 5, -655359, 0, 5, -655358, 0, 5, -655357, 0, 196610, -655356, 0, 5, -655355, 0, 5, -655354, 0, 5, -655353, 0, 5, -655352, 0, 5, -655351, 0, 5, -655350, 0, 5, -655349, 0, 5, -655348, 0, 5, -655347, 0, 327681, -655345, 0, 65539, -524304, 0, 65539, -524302, 0, 65539, -524300, 0, 131075, -524292, 0, 65539, -589821, 0, 65539, -589811, 0, 65539, -589809, 0, 65539, -458768, 0, 65539, -458766, 0, 65539, -458756, 0, 393216, -458755, 0, 6, -524286, 0, 4, -524285, 0, 393217, -524279, 0, 4, -524278, 0, 5, -524277, 0, 327681, -524275, 0, 65539, -524273, 0, 65539, -393232, 0, 65539, -393230, 0, 65539, -458741, 0, 65539, -458739, 0, 65539, -458737, 0, 65539, -327696, 0, 65539, -327694, 0, 65539, -327692, 0, 3, -327686, 0, 4, -327685, 0, 5, -327684, 0, 5, -327683, 0, 5, -327682, 0, 5, -327681, 0, 5, -393216, 0, 5, -393215, 0, 5, -393214, 0, 5, -393213, 0, 5, -393212, 0, 5, -393211, 0, 196609, -393210, 0, 6, -393205, 0, 65539, -393203, 0, 65539, -393201, 0, 65539, -262160, 0, 65539, -262158, 0, 65539, -262156, 0, 196608, -262155, 0, 5, -262154, 0, 6, -327675, 0, 65539, -327669, 0, 65539, -327667, 0, 65539, -327665, 0, 65539, -196624, 0, 65539, -196622, 0, 65539, -196620, 0, 65539, -262139, 0, 65539, -262133, 0, 65539, -262131, 0, 65539, -262129, 0, 65539, -131088, 0, 65539, -131086, 0, 65539, -131084, 0, 65539, -131080, 0, 4, -131079, 0, 5, -131078, 0, 327681, -196603, 0, 196612, -196602, 0, 6, -196597, 0, 65539, -196595, 0, 65539, -196593, 0, 65539, -65552, 0, 65539, -65550, 0, 65539, -65548, 0, 65539, -65542, 0, 65539, -65537, 0, 4, -131072, 0, 5, -131071, 0, 6, -131067, 0, 65539, -131061, 0, 65539, -131059, 0, 65539, -131057, 0, 65539, -16, 0, 65539, -14, 0, 65539, -12, 0, 65539, -6, 0, 131075, -2, 0, 65542, -65532, 0, 4, -65531, 0, 262145, -65525, 0, 65539, -65523, 0, 65539, -65521, 0, 65539, 65520, 0, 65539, 65522, 0, 65539, 65524, 0, 65539, 5, 0, 131075, 11, 0, 65539, 13, 0, 65539, 15, 0, 65539, 131056, 0, 65539, 131058, 0, 65539, 131060, 0, 65539, 131063, 0, 65542, 131069, 0, 4, 131070, 0, 5, 131071, 0, 5, 65536, 0, 5, 65537, 0, 5, 65538, 0, 6, 65547, 0, 65539, 65549, 0, 65539, 65551, 0, 65539, 196592, 0, 65539, 196594, 0, 65539, 196596, 0, 65539, 196602, 0, 65542, 131080, 0, 65542, 131083, 0, 65539, 131085, 0, 65539, 131087, 0, 65539, 262128, 0, 65539, 262130, 0, 65539, 262132, 0, 65539, 196619, 0, 65539, 196621, 0, 65539, 196623, 0, 65539, 327664, 0, 65539, 327666, 0, 65539, 327668, 0, 65539, 327674, 0, 4, 327675, 0, 5, 327676, 0, 5, 327677, 0, 5, 327678, 0, 5, 327679, 0, 5, 262144, 0, 5, 262145, 0, 5, 262146, 0, 5, 262147, 0, 5, 262148, 0, 5, 262149, 0, 6, 262155, 0, 65539, 262157, 0, 65539, 262159, 0, 65539, 393200, 0, 65539, 393202, 0, 65539, 393204, 0, 65539, 327691, 0, 65539, 327693, 0, 65539, 327695, 0, 65539, 458736, 0, 65539, 458738, 0, 131075, 458740, 0, 131075, 393225, 0, 4, 393226, 0, 5, 393227, 0, 393217, 393229, 0, 131075, 393231, 0, 65539, 524272, 0, 65539, 458753, 0, 3, 458767, 0, 65539, 589808, 0, 131075, 589810, 0, 65542, 589812, 0, 4, 589813, 0, 5, 589814, 0, 5, 589815, 0, 5, 589816, 0, 5, 589817, 0, 5, 589818, 0, 5, 589819, 0, 5, 589820, 0, 5, 589821, 0, 5, 589822, 0, 5, 589823, 0, 5, 524288, 0, 5, 524289, 0, 262147, 524290, 0, 5, 524291, 0, 5, 524292, 0, 5, 524293, 0, 5, 524294, 0, 5, 524295, 0, 5, 524296, 0, 5, 524297, 0, 5, 524298, 0, 5, 524299, 0, 6, 524301, 0, 65542, 524303, 0, 131075 )
 
-[node name="SkyParticles" parent="." index="1" instance=ExtResource( 7 )]
+[node name="SkyParticles" parent="." index="1" instance=ExtResource( 6 )]
 position = Vector2( -51.1135, -186.81 )
 
 [node name="PlayerSpawn" parent="." index="3"]
 position = Vector2( 0.0785828, 0.486771 )
 
-[node name="JumpKey" parent="Interactables/Keys" index="0" instance=ExtResource( 4 )]
+[node name="JumpKey" parent="Interactables/Keys" index="0" instance=ExtResource( 7 )]
 position = Vector2( -26.0678, 6.56807 )
-frame = 5
+frame = 3
 
-[node name="JumpKey15" parent="Interactables/Keys" index="1" instance=ExtResource( 4 )]
+[node name="JumpKey15" parent="Interactables/Keys" index="1" instance=ExtResource( 7 )]
 position = Vector2( -87.8916, 22.6139 )
-frame = 4
+frame = 2
 
-[node name="JumpKey2" parent="Interactables/Keys" index="2" instance=ExtResource( 4 )]
+[node name="JumpKey2" parent="Interactables/Keys" index="2" instance=ExtResource( 7 )]
 position = Vector2( 24.2567, 7.0978 )
-frame = 5
+frame = 3
 
-[node name="JumpKey7" parent="Interactables/Keys" index="3" instance=ExtResource( 4 )]
+[node name="JumpKey7" parent="Interactables/Keys" index="3" instance=ExtResource( 7 )]
 position = Vector2( -54.1533, -105.903 )
+frame = 3
+
+[node name="JumpKey3" parent="Interactables/Keys" index="4" instance=ExtResource( 7 )]
+position = Vector2( 72.8708, -25.4439 )
+frame = 2
+
+[node name="JumpKey4" parent="Interactables/Keys" index="5" instance=ExtResource( 7 )]
+position = Vector2( 5.82159, -41.9253 )
 frame = 5
 
-[node name="JumpKey3" parent="Interactables/Keys" index="4" instance=ExtResource( 4 )]
-position = Vector2( 72.8708, -25.4439 )
-frame = 4
-
-[node name="JumpKey4" parent="Interactables/Keys" index="5" instance=ExtResource( 4 )]
-position = Vector2( 5.82159, -41.9253 )
-
-[node name="JumpKey5" parent="Interactables/Keys" index="6" instance=ExtResource( 4 )]
+[node name="JumpKey5" parent="Interactables/Keys" index="6" instance=ExtResource( 7 )]
 position = Vector2( -169.685, -90.0338 )
-frame = 2
+frame = 0
 
-[node name="JumpKey12" parent="Interactables/Keys" index="7" instance=ExtResource( 4 )]
+[node name="JumpKey12" parent="Interactables/Keys" index="7" instance=ExtResource( 7 )]
 position = Vector2( 132.261, 116.561 )
-frame = 2
+frame = 0
 
-[node name="JumpKey6" parent="Interactables/Keys" index="8" instance=ExtResource( 4 )]
+[node name="JumpKey6" parent="Interactables/Keys" index="8" instance=ExtResource( 7 )]
 position = Vector2( -107.323, -57.0706 )
-frame = 1
 
-[node name="JumpKey8" parent="Interactables/Keys" index="9" instance=ExtResource( 4 )]
+[node name="JumpKey8" parent="Interactables/Keys" index="9" instance=ExtResource( 7 )]
 position = Vector2( 56.8681, -103.839 )
-frame = 0
+frame = 6
 
-[node name="JumpKey9" parent="Interactables/Keys" index="10" instance=ExtResource( 4 )]
+[node name="JumpKey9" parent="Interactables/Keys" index="10" instance=ExtResource( 7 )]
 position = Vector2( -87.7078, 117.592 )
-frame = 0
+frame = 6
 
-[node name="JumpKey10" parent="Interactables/Keys" index="11" instance=ExtResource( 4 )]
+[node name="JumpKey10" parent="Interactables/Keys" index="11" instance=ExtResource( 7 )]
 position = Vector2( -109.417, -171.177 )
-frame = 0
+frame = 6
 
-[node name="JumpKey11" parent="Interactables/Keys" index="12" instance=ExtResource( 4 )]
+[node name="JumpKey11" parent="Interactables/Keys" index="12" instance=ExtResource( 7 )]
 position = Vector2( 107.674, -170.342 )
+frame = 5
 
-[node name="JumpKey14" parent="Interactables/Keys" index="13" instance=ExtResource( 4 )]
+[node name="JumpKey14" parent="Interactables/Keys" index="13" instance=ExtResource( 7 )]
 position = Vector2( -31.8085, 52.1046 )
+frame = 5
 
-[node name="JumpKey13" parent="Interactables/Keys" index="14" instance=ExtResource( 4 )]
+[node name="JumpKey13" parent="Interactables/Keys" index="14" instance=ExtResource( 7 )]
 position = Vector2( 73.0412, 54.1278 )
+frame = 5
 
 [node name="Star" parent="Interactables/Collectables" index="0" instance=ExtResource( 5 )]
 position = Vector2( 0, -113 )
-frame = 2
+frame = 4
 
 [node name="Star5" parent="Interactables/Collectables" index="1" instance=ExtResource( 5 )]
 position = Vector2( 0.500565, -167.362 )
+frame = 3
 
 [node name="Star2" parent="Interactables/Collectables" index="2" instance=ExtResource( 5 )]
 position = Vector2( 0, 111 )
+frame = 3
 
 [node name="Star3" parent="Interactables/Collectables" index="3" instance=ExtResource( 5 )]
 position = Vector2( 136, 18 )
-frame = 0
+frame = 2
 
 [node name="Star4" parent="Interactables/Collectables" index="4" instance=ExtResource( 5 )]
 position = Vector2( -137, 0 )
-frame = 0
-
-[node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 3 )]
-position = Vector2( -0.494598, -207.306 )
 frame = 2
+
+[node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 2 )]
+position = Vector2( -0.494598, -207.306 )
+frame = 10
 
 [node name="OutOfBounds" parent="." index="5"]
 position = Vector2( -1107.57, -629.416 )
 scale = Vector2( 1.64299, 2.61045 )
 
-[node name="Lift" parent="." index="6" instance=ExtResource( 6 )]
+[node name="Lift" parent="." index="6" instance=ExtResource( 3 )]
 position = Vector2( -208, 128 )
 vel = -500.0
 
-[node name="Lift2" parent="." index="7" instance=ExtResource( 6 )]
+[node name="Lift2" parent="." index="7" instance=ExtResource( 3 )]
 position = Vector2( 192, 128 )
 vel = -700.0
 
-[node name="Lift3" parent="." index="8" instance=ExtResource( 6 )]
+[node name="Lift3" parent="." index="8" instance=ExtResource( 3 )]
 position = Vector2( -240, 128 )
 vel = -1000.0
 
-[node name="Lift4" parent="." index="9" instance=ExtResource( 6 )]
+[node name="Lift4" parent="." index="9" instance=ExtResource( 3 )]
 position = Vector2( 224, 128 )
 vel = -1000.0

@@ -4,6 +4,8 @@
 [ext_resource path="res://Scripts/Collectables/Star.gd" type="Script" id=2]
 [ext_resource path="res://Art/Collectables/star_animated_updown.png" type="Texture" id=3]
 
+
+
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )

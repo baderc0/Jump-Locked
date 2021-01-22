@@ -8,7 +8,7 @@
 [ext_resource path="res://Scenes/Interactables/Portal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Environment/SkyBG.tscn" type="PackedScene" id=9]
 
-[node name="Level_3" instance=ExtResource( 3 )]
+[node name="1-3" instance=ExtResource( 3 )]
 pause_mode = 2
 
 [node name="Grass2" parent="." index="0" instance=ExtResource( 1 )]
@@ -30,11 +30,11 @@ position = Vector2( 0.396851, 0 )
 
 [node name="JumpKey3" parent="Interactables/Keys" index="0" instance=ExtResource( 2 )]
 position = Vector2( 122.707, 163.657 )
-frame = 2
+frame = 0
 
 [node name="JumpKey4" parent="Interactables/Keys" index="1" instance=ExtResource( 2 )]
 position = Vector2( -59.0194, 194.77 )
-frame = 2
+frame = 0
 
 [node name="Star2" parent="Interactables/Collectables" index="0" instance=ExtResource( 6 )]
 position = Vector2( 249.525, 162.338 )
@@ -49,7 +49,7 @@ position = Vector2( -1.41422, -10.6066 )
 
 [node name="Portal" parent="Interactables/Portals" index="0" instance=ExtResource( 7 )]
 position = Vector2( 6.36334, 346.93 )
-frame = 11
+frame = 5
 
 [node name="OutOfBounds" parent="." index="5"]
 position = Vector2( -398.268, -79.7415 )

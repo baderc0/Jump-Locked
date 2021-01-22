@@ -463,6 +463,7 @@ __meta__ = {
 }
 
 [node name="UnlockedLabel" type="Label" parent="."]
+visible = false
 margin_left = -19.3285
 margin_top = -38.7712
 margin_right = 20.6715
@@ -508,7 +509,7 @@ material = SubResource( 47 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 6
-frame = 28
+frame = 29
 
 [node name="InputReactions" type="AnimationPlayer" parent="Rig/Sprite"]
 anims/no_jump = SubResource( 48 )

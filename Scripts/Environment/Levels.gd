@@ -16,6 +16,9 @@ export var next_scene: String
 var UI_scene  = preload("res://Scenes/UI/UI.tscn")
 var UI
 
+var world
+var level
+
 var num_of_collectables = 0
 
 func _ready():
@@ -23,11 +26,14 @@ func _ready():
 	for collectable in get_tree().get_nodes_in_group("collectables"):
 		num_of_collectables += 1
 	
-	current_level = int(name)
+	world = int(name[0])
+	level = int(name [2])
+
+	current_level = (str(world) + "-" + str(level))
 	player = player_scene.instance()
 	player.global_position = $PlayerSpawn.position
 	player.is_unlocked = false
-	if current_level > 5:
+	if world > 1:
 		player.has_backpack = true
 	
 	UI = UI_scene.instance()
@@ -110,7 +116,7 @@ func change_level():
 	if next_scene != "":
 		get_tree().change_scene(next_scene)
 	else:
-		get_tree().change_scene("res://Scenes/Levels/Level_" + str(current_level + 1) + ".tscn")
+		get_tree().change_scene("res://Scenes/Levels/" + str(world) + "-" + str(level + 1) + ".tscn")
 
 func _on_Portal_touched():
 	if $Player.collectables == num_of_collectables:
@@ -136,6 +142,7 @@ func _on_Player_death():
 	$Player.collectables = 0
 	$Player.can_run = false
 	$Player.velocity.x = 0
+	$Player.velocity.y = 0
 	$Player.move_dir = 1
 	respawn_interactables()  
 

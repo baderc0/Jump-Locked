@@ -84,8 +84,12 @@ func apply_movement():
 			print("player died! lol")
 			die()
 		elif collision.collider.is_in_group("lift"):
+			var_jump_count += 1
 			print("lift")
 			self.velocity.y = collision.collider.vel
+		elif collision.collider.is_in_group("side_lift"):
+			print("hit side lift")
+			self.velocity.x = collision.collider.vel
 
 func check_state():
 	$UnlockedLabel.text = str(is_unlocked)
@@ -125,6 +129,7 @@ func _input(event):
 			$Rig/Sprite/InputReactions.play("no_jump")
 			$Camera2D/ScreenShake.start(0.1, 5, 7, 1)
 	elif event.is_action_released("jump") && !is_grounded():
+		print("jump count: " + str(var_jump_count))
 		if var_jump_count == 0:
 			if velocity.y < -25:
 				velocity.y =  0
@@ -157,6 +162,7 @@ func jump():
 func is_grounded():
 	for ray in $Rig/GroundedRaycasts.get_children():
 		if ray.is_colliding():
+			
 			return true
 	return false
 
