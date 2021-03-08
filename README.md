@@ -3,6 +3,7 @@ Jump Locke'd was made in the Godot engine and created in two weeks for my first 
 
 # What I Learned
 - General game design principles
+- Finite State Machines
 - raycasts
 - animations
 - Godot signals
